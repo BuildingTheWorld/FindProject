@@ -18,6 +18,8 @@
 		081407271EBC8A6D009AD987 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0814071C1EBC8A6D009AD987 /* ViewController.m */; };
 		081407281EBC8A6D009AD987 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 081407211EBC8A6D009AD987 /* UIColor+Hex.m */; };
 		081407291EBC8A6D009AD987 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 081407231EBC8A6D009AD987 /* UIImage+UIColor.m */; };
+		0814072C1EBC8B73009AD987 /* QTPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0814072B1EBC8B73009AD987 /* QTPageTitleView.m */; };
+		0814072F1EBC90AF009AD987 /* QTPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0814072E1EBC90AF009AD987 /* QTPageContentView.m */; };
 		4F5575161C8F4C7077B55B9D /* libPods-FindProjectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094A6296B43289D44A3098D8 /* libPods-FindProjectDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,10 @@
 		081407211EBC8A6D009AD987 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		081407221EBC8A6D009AD987 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		081407231EBC8A6D009AD987 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
+		0814072A1EBC8B73009AD987 /* QTPageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPageTitleView.h; sourceTree = "<group>"; };
+		0814072B1EBC8B73009AD987 /* QTPageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPageTitleView.m; sourceTree = "<group>"; };
+		0814072D1EBC90AF009AD987 /* QTPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPageContentView.h; sourceTree = "<group>"; };
+		0814072E1EBC90AF009AD987 /* QTPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPageContentView.m; sourceTree = "<group>"; };
 		094A6296B43289D44A3098D8 /* libPods-FindProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99ACE6E93F8B31054ABA1F36 /* Pods-FindProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindProjectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindProjectDemo/Pods-FindProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C4930563DA501FE4D0D18E28 /* Pods-FindProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindProjectDemo/Pods-FindProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,14 +130,14 @@
 		081407141EBC8A6D009AD987 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0814071B1EBC8A6D009AD987 /* ViewController.h */,
+				0814071C1EBC8A6D009AD987 /* ViewController.m */,
 				081407151EBC8A6D009AD987 /* FindViewController.h */,
 				081407161EBC8A6D009AD987 /* FindViewController.m */,
 				081407171EBC8A6D009AD987 /* QTOfficialViewController.h */,
 				081407181EBC8A6D009AD987 /* QTOfficialViewController.m */,
 				081407191EBC8A6D009AD987 /* QTPinterestViewController.h */,
 				0814071A1EBC8A6D009AD987 /* QTPinterestViewController.m */,
-				0814071B1EBC8A6D009AD987 /* ViewController.h */,
-				0814071C1EBC8A6D009AD987 /* ViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,6 +152,10 @@
 		0814071E1EBC8A6D009AD987 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0814072A1EBC8B73009AD987 /* QTPageTitleView.h */,
+				0814072B1EBC8B73009AD987 /* QTPageTitleView.m */,
+				0814072D1EBC90AF009AD987 /* QTPageContentView.h */,
+				0814072E1EBC90AF009AD987 /* QTPageContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0814072F1EBC90AF009AD987 /* QTPageContentView.m in Sources */,
 				081407271EBC8A6D009AD987 /* ViewController.m in Sources */,
 				081407241EBC8A6D009AD987 /* FindViewController.m in Sources */,
 				081406F01EBC5C23009AD987 /* AppDelegate.m in Sources */,
@@ -308,6 +319,7 @@
 				081407281EBC8A6D009AD987 /* UIColor+Hex.m in Sources */,
 				081407291EBC8A6D009AD987 /* UIImage+UIColor.m in Sources */,
 				081406ED1EBC5C23009AD987 /* main.m in Sources */,
+				0814072C1EBC8B73009AD987 /* QTPageTitleView.m in Sources */,
 				081407261EBC8A6D009AD987 /* QTPinterestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
