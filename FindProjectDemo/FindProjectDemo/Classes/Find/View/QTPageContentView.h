@@ -10,4 +10,6 @@
 
 @interface QTPageContentView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame childVcArray:(NSArray *)childVcArray parentViewController:(UIViewController *)parentController;
+
 @end
