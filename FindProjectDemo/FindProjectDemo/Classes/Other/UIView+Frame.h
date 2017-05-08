@@ -1,9 +1,9 @@
 //
 //  UIView+Frame.h
-//  BuDeJie
+//  QT
 //
-//  Created by xmg on 16/4/25.
-//  Copyright © 2016年 xmg. All rights reserved.
+//  Created by qt on 16/4/25.
+//  Copyright © 2016年 qt. All rights reserved.
 //
 
 
@@ -12,12 +12,12 @@
 
 @interface UIView (Frame)
 
-@property CGFloat xmg_width;
-@property CGFloat xmg_height;
-@property CGFloat xmg_x;
-@property CGFloat xmg_y;
+@property CGFloat qt_width;
+@property CGFloat qt_height;
+@property CGFloat qt_x;
+@property CGFloat qt_y;
 
-@property CGFloat xmg_centerX;
-@property CGFloat xmg_centerY;
+@property CGFloat qt_centerX;
+@property CGFloat qt_centerY;
 
 @end

@@ -63,7 +63,11 @@ CGFloat kScrollLineH = 4;
         
         _scrollLine.backgroundColor = [UIColor colorWithHexValue:0x7FD49B alpha:1];
         
-        _scrollLine.frame = CGRectMake(70 * SCALE_6S_WIDTH, self.frame.size.height - kScrollLineH * SCALE_6S_HEIGHT, 46 * SCALE_6S_WIDTH, kScrollLineH * SCALE_6S_HEIGHT);
+        
+        
+        
+        
+//        _scrollLine.frame = CGRectMake(70 * SCALE_6S_WIDTH, self.frame.size.height - kScrollLineH * SCALE_6S_HEIGHT, 46 * SCALE_6S_WIDTH, kScrollLineH * SCALE_6S_HEIGHT);
     }
     
     return _scrollLine;
@@ -75,7 +79,7 @@ CGFloat kScrollLineH = 4;
 {
     [self setupTitleLabels];
     
-    [self setupBottomLineAndScrollLine];
+    [self setupBottomLine];
     
 }
 
@@ -98,10 +102,7 @@ CGFloat kScrollLineH = 4;
         
         label.font = [UIFont systemFontOfSize:13];
         
-        if (i == 0)
-        {
-            label.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
-        }
+        
         
         label.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
         
@@ -122,19 +123,32 @@ CGFloat kScrollLineH = 4;
         
         [label addGestureRecognizer:tapGes];
         
+        
+        if (i == 0)
+        {
+            label.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
+            
+            // 添加下划线
+            
+            UIView *scrollLineView = self.scrollLine;
+            
+            scrollLineView.qt_width = 46 * SCALE_6S_WIDTH;
+            
+            scrollLineView.qt_height = 4 * SCALE_6S_HEIGHT;
+            
+            scrollLineView.qt_centerX = label.qt_centerX;
+            
+            scrollLineView.qt_y = self.qt_height - scrollLineView.qt_height;
+            
+            [self addSubview:scrollLineView];
+            
+        }
     }
 }
 
 
-- (void)setupBottomLineAndScrollLine
+- (void)setupBottomLine
 {
-    
-//    let bottomLine = UIView()
-//    bottomLine.backgroundColor = UIColor.lightGray
-//    let lineH : CGFloat = 0.5
-//    bottomLine.frame = CGRect(x: 0, y: frame.height - lineH, width: frame.width, height: lineH)
-//    addSubview(bottomLine)
-    
     // 底线
     
     UIView *bottomLine = [[UIView alloc] init];
@@ -145,50 +159,10 @@ CGFloat kScrollLineH = 4;
     
     [self addSubview:bottomLine];
     
-    // 下划线
-    
-    [self addSubview:self.scrollLine];
-    
-    
 }
 
 - (void)titleLabelClick:(UITapGestureRecognizer *)tapGes
 {
-//    NSLog(@"----");
-    
-    
-    // 0.获取当前Label
-    
-//    guard let currentLabel = tapGes.view as? UILabel else { return }
-    
-    // 1.如果是重复点击同一个Title,那么直接返回
-    
-//    if currentLabel.tag == currentIndex { return }
-    
-    // 2.获取之前的Label
-    
-//    let oldLabel = titleLabels[currentIndex]
-    
-    // 3.切换文字的颜色
-    
-//    currentLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
-    
-//    oldLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
-    
-    // 4.保存最新Label的下标值
-    
-//    currentIndex = currentLabel.tag
-    
-    // 5.滚动条位置发生改变
-    
-//    let scrollLineX = CGFloat(currentIndex) * scrollLine.frame.width
-    
-//    UIView.animate(withDuration: 0.15, animations: {
-    
-//        self.scrollLine.frame.origin.x = scrollLineX
-    
-//    })
-    
     // 6.通知代理
     
 //    delegate?.pageTitleView(self, selectedIndex: currentIndex)
@@ -211,14 +185,8 @@ CGFloat kScrollLineH = 4;
     
     [UIView animateWithDuration:0.2 animations:^{
         
-        if (self.currentIndex == 0)
-        {
-            self.scrollLine.frame = CGRectMake(70 * SCALE_6S_WIDTH, self.frame.size.height - kScrollLineH * SCALE_6S_HEIGHT, 46 * SCALE_6S_WIDTH, kScrollLineH * SCALE_6S_HEIGHT);
-        }
-        if (self.currentIndex == 1)
-        {
-            self.scrollLine.frame = CGRectMake(257 * SCALE_6S_WIDTH, self.frame.size.height - kScrollLineH *SCALE_6S_HEIGHT, 46 * SCALE_6S_WIDTH, kScrollLineH * SCALE_6S_HEIGHT);
-        }
+        self.scrollLine.qt_centerX = currentLabel.qt_centerX;
+        
     }];
     
 }

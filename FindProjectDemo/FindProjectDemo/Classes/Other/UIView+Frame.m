@@ -1,95 +1,95 @@
 //
 //  UIView+Frame.m
-//  BuDeJie
+//  QT
 //
-//  Created by xmg on 16/4/25.
-//  Copyright © 2016年 xmg. All rights reserved.
+//  Created by qt on 16/4/25.
+//  Copyright © 2016年 qt. All rights reserved.
 //
 
 #import "UIView+Frame.h"
 
 @implementation UIView (Frame)
 
-- (CGFloat)xmg_height
+- (CGFloat)qt_height
 {
     return self.frame.size.height;
 }
 
-- (void)setXmg_height:(CGFloat)xmg_height
+- (void)setQt_height:(CGFloat)qt_height
 {
     CGRect frame = self.frame;
     
-    frame.size.height = xmg_height;
+    frame.size.height = qt_height;
     
     self.frame = frame;
 }
 
-- (CGFloat)xmg_width
+- (CGFloat)qt_width
 {
     return self.frame.size.width;
 }
 
-- (void)setXmg_width:(CGFloat)xmg_width
+- (void)setQt_width:(CGFloat)qt_width
 {
     CGRect frame = self.frame;
     
-    frame.size.width = xmg_width;
+    frame.size.width = qt_width;
     
     self.frame = frame;
 }
 
-- (CGFloat)xmg_x
+- (CGFloat)qt_x
 {
     return self.frame.origin.x;
 }
 
-- (void)setXmg_x:(CGFloat)xmg_x
+- (void)setQt_x:(CGFloat)qt_x
 {
     CGRect frame = self.frame;
     
-    frame.origin.x = xmg_x;
+    frame.origin.x = qt_x;
     
     self.frame = frame;
 }
 
-- (CGFloat)xmg_y
+- (CGFloat)qt_y
 {
      return self.frame.origin.y;
 }
 
-- (void)setXmg_y:(CGFloat)xmg_y
+- (void)setQt_y:(CGFloat)qt_y
 {
     CGRect frame = self.frame;
     
-    frame.origin.y = xmg_y;
+    frame.origin.y = qt_y;
     
     self.frame = frame;
 }
 
-- (void)setXmg_centerX:(CGFloat)xmg_centerX
+- (void)setQt_centerX:(CGFloat)qt_centerX
 {
     CGPoint center = self.center;
     
-    center.x = xmg_centerX;
+    center.x = qt_centerX;
     
     self.center = center;
 }
 
-- (CGFloat)xmg_centerX
+- (CGFloat)qt_centerX
 {
     return self.center.x;
 }
 
-- (void)setXmg_centerY:(CGFloat)xmg_centerY
+- (void)setQt_centerY:(CGFloat)qt_centerY
 {
     CGPoint center = self.center;
     
-    center.y = xmg_centerY;
+    center.y = qt_centerY;
     
     self.center = center;
 }
 
-- (CGFloat)xmg_centerY
+- (CGFloat)qt_centerY
 {
     return self.center.y;
 }
