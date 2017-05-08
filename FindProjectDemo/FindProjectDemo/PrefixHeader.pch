@@ -17,7 +17,7 @@
 #define MAS_SHORTHAND_GLOBALS
 #import <Masonry.h>
 
-
+#import "UIView+Frame.h"
 #import "UIImage+UIColor.h"
 #import "UIColor+Hex.h"
 
