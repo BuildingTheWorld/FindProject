@@ -33,7 +33,7 @@
         
         _pageTitleView = [[QTPageTitleView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 34 * SCALE_6S_HEIGHT) titles:titleArray];
         
-        _pageTitleView.backgroundColor = [UIColor greenColor];
+//        _pageTitleView.backgroundColor = [UIColor greenColor];
     }
     
     return _pageTitleView;
