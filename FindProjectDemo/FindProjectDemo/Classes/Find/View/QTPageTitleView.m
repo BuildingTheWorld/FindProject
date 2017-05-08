@@ -10,13 +10,19 @@
 
 CGFloat kScrollLineH = 4;
 
+//NSString * titleClick = @"titleClick";
+
 @interface QTPageTitleView ()
 
 // 存储属性
 
-@property (strong, nonatomic)NSArray *titleArray;
+@property (strong, nonatomic) NSArray *titleArray;
 
-@property (assign, nonatomic)NSInteger currentIndex;
+@property (assign, nonatomic) NSInteger oldIndex;
+
+//@property (strong, nonatomic) UILabel *currentLabel;
+
+//@property (strong, nonatomic) UILabel *oldLabel;
 
 // 懒加载属性
 
@@ -60,14 +66,7 @@ CGFloat kScrollLineH = 4;
 {
     if (_scrollLine == nil) {
         _scrollLine = [[UIView alloc] init];
-        
         _scrollLine.backgroundColor = [UIColor colorWithHexValue:0x7FD49B alpha:1];
-        
-        
-        
-        
-        
-//        _scrollLine.frame = CGRectMake(70 * SCALE_6S_WIDTH, self.frame.size.height - kScrollLineH * SCALE_6S_HEIGHT, 46 * SCALE_6S_WIDTH, kScrollLineH * SCALE_6S_HEIGHT);
     }
     
     return _scrollLine;
@@ -128,6 +127,8 @@ CGFloat kScrollLineH = 4;
         {
             label.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
             
+            self.oldIndex = 0;
+            
             // 添加下划线
             
             UIView *scrollLineView = self.scrollLine;
@@ -143,6 +144,19 @@ CGFloat kScrollLineH = 4;
             [self addSubview:scrollLineView];
             
         }
+        
+        
+        // 监听通知
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:@"scrollView" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            
+            UIScrollView * tempScrollView = [note.userInfo objectForKey:@"scrollView"];
+            
+            NSInteger i = tempScrollView.contentOffset.x / SCREEN_WIDTH;
+            
+            [self setTitleIndex:i];
+            
+        }];
     }
 }
 
@@ -161,26 +175,28 @@ CGFloat kScrollLineH = 4;
     
 }
 
+#pragma mark - label 点击事件
+
 - (void)titleLabelClick:(UITapGestureRecognizer *)tapGes
 {
-    // 6.通知代理
-    
-//    delegate?.pageTitleView(self, selectedIndex: currentIndex)
 
     UILabel *currentLabel = (UILabel *)tapGes.view;
     
-    if (currentLabel.tag == self.currentIndex)
+    if (self.oldIndex == currentLabel.tag)
     {
         return;
     }
     
-    UILabel *oldLabel = self.titleLabelArray[self.currentIndex];
+    UILabel *oldLabel = self.titleLabelArray[self.oldIndex];
+
+    self.oldIndex = currentLabel.tag;
     
-    currentLabel.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
     
     oldLabel.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
     
-    self.currentIndex = currentLabel.tag;
+    currentLabel.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
+    
+    
     
     
     [UIView animateWithDuration:0.2 animations:^{
@@ -189,6 +205,52 @@ CGFloat kScrollLineH = 4;
         
     }];
     
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:currentLabel forKey:@"currentLabel"];
+    
+    // 发送 通知
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"titleClick" object:nil userInfo:dict];
+    
+    
+    
+}
+
+
+- (void)setTitleIndex:(NSInteger)index
+{
+    
+    if (self.oldIndex == index)
+    {
+        return;
+    }
+    
+    UILabel *oldLabel = self.titleLabelArray[self.oldIndex];
+    
+    UILabel *nowLabel = self.titleLabelArray[index];
+    
+    
+    self.oldIndex = index;
+    
+    
+    oldLabel.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
+    
+    nowLabel.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
+    
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        self.scrollLine.qt_centerX = nowLabel.qt_centerX;
+        
+    }];
+    
+    
+    
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"scrollView" object:nil];
 }
 
 

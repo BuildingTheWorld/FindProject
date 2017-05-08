@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     
-    self.view.backgroundColor = [UIColor magentaColor];
+//    self.view.backgroundColor = [UIColor magentaColor];
     
     
     UIColor *navColor = [UIColor colorWithHexValue:0xFBFAFA alpha:1];

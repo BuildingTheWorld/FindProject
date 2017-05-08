@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class QTPageContentView;
+
+@protocol QTPageContentViewDelegate <NSObject>
+
+- (void)pageContentView:(UIView *)pageContentView setTitleIndex:(NSInteger)index;
+
+@end
+
+
 @interface QTPageContentView : UIView
+
+@property (weak, nonatomic) id <QTPageContentViewDelegate> delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame childVcArray:(NSArray *)childVcArray parentViewController:(UIViewController *)parentController;
 
