@@ -67,6 +67,8 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+//    self.view.autoresizingMask = NO;
+    
     [self setUpSubViews];
     
 }

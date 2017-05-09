@@ -7,6 +7,7 @@
 //
 
 #import "QTOfficialViewController.h"
+#import "QTOfficialCollectionViewCell.h"
 
 @interface QTOfficialViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -25,7 +26,11 @@
         
         UICollectionViewFlowLayout *officialLayout = [[UICollectionViewFlowLayout alloc] init];
         
-        officialLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
+//        officialLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
+        
+        officialLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
+        
+        officialLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
         
         officialLayout.minimumLineSpacing = 0;
         
@@ -37,11 +42,13 @@
         
         _officialCollectionView.delegate = self;
         
+        
+        
 //        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-
-        [_officialCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"officialCollectionViewCell"];
         
+//        [_officialCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([QTOfficialCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:@"officialCollectionViewCell"];
         
+        [_officialCollectionView registerClass:[QTOfficialCollectionViewCell class] forCellWithReuseIdentifier:@"officialCollectionViewCell"];
     }
     
     return _officialCollectionView;
@@ -62,7 +69,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 50;
+    return 5;
 }
 
 
@@ -77,6 +84,7 @@
     
     return cell;
 }
+
 
 
 #pragma mark - officialCollectionView delegate
