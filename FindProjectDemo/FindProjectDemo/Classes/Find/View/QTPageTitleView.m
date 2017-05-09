@@ -8,9 +8,9 @@
 
 #import "QTPageTitleView.h"
 
+
 CGFloat kScrollLineH = 4;
 
-//NSString * titleClick = @"titleClick";
 
 @interface QTPageTitleView ()
 
@@ -20,9 +20,6 @@ CGFloat kScrollLineH = 4;
 
 @property (assign, nonatomic) NSInteger oldIndex;
 
-//@property (strong, nonatomic) UILabel *currentLabel;
-
-//@property (strong, nonatomic) UILabel *oldLabel;
 
 // 懒加载属性
 
@@ -79,7 +76,6 @@ CGFloat kScrollLineH = 4;
     [self setupTitleLabels];
     
     [self setupBottomLine];
-    
 }
 
 
@@ -95,22 +91,15 @@ CGFloat kScrollLineH = 4;
         
         UILabel *label = [[UILabel alloc] init];
         
-        label.text = self.titleArray[i];
-        
         label.tag = i;
         
-        label.font = [UIFont systemFontOfSize:13];
-        
-        
-        
-        label.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
-        
-        label.textAlignment = NSTextAlignmentCenter;
-        
-        
         CGFloat labelX = labelW * i;
-        
         label.frame = CGRectMake(labelX, labelY, labelW, labelH);
+        
+        label.font = [UIFont systemFontOfSize:13];
+        label.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
+        label.text = self.titleArray[i];
+        label.textAlignment = NSTextAlignmentCenter;
         
         [self addSubview:label];
         
@@ -125,28 +114,24 @@ CGFloat kScrollLineH = 4;
         
         if (i == 0)
         {
-            label.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
-            
             self.oldIndex = 0;
+            
+            label.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
             
             // 添加下划线
             
             UIView *scrollLineView = self.scrollLine;
-            
+
             scrollLineView.qt_width = 46 * SCALE_6S_WIDTH;
-            
             scrollLineView.qt_height = 4 * SCALE_6S_HEIGHT;
-            
             scrollLineView.qt_centerX = label.qt_centerX;
-            
             scrollLineView.qt_y = self.qt_height - scrollLineView.qt_height;
             
             [self addSubview:scrollLineView];
-            
         }
         
         
-        // 监听通知
+        // 监听 scrollView 通知
         
         [[NSNotificationCenter defaultCenter] addObserverForName:@"scrollView" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             
@@ -182,6 +167,7 @@ CGFloat kScrollLineH = 4;
 
     UILabel *currentLabel = (UILabel *)tapGes.view;
     
+    
     if (self.oldIndex == currentLabel.tag)
     {
         return;
@@ -191,13 +177,8 @@ CGFloat kScrollLineH = 4;
 
     self.oldIndex = currentLabel.tag;
     
-    
     oldLabel.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
-    
     currentLabel.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
-    
-    
-    
     
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -205,16 +186,15 @@ CGFloat kScrollLineH = 4;
         
     }];
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:currentLabel forKey:@"currentLabel"];
+    // 广播 titleClick 通知
     
-    // 发送 通知
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:currentLabel forKey:@"currentLabel"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"titleClick" object:nil userInfo:dict];
     
-    
-    
 }
 
+#pragma mark - label 根据 collectionView 改变
 
 - (void)setTitleIndex:(NSInteger)index
 {
@@ -225,28 +205,21 @@ CGFloat kScrollLineH = 4;
     }
     
     UILabel *oldLabel = self.titleLabelArray[self.oldIndex];
-    
     UILabel *nowLabel = self.titleLabelArray[index];
-    
     
     self.oldIndex = index;
     
-    
     oldLabel.textColor = [UIColor colorWithHexValue:0x3E3E3E alpha:1];
-    
     nowLabel.textColor = [UIColor colorWithHexValue:0x00AF43 alpha:1];
-    
     
     [UIView animateWithDuration:0.2 animations:^{
         
         self.scrollLine.qt_centerX = nowLabel.qt_centerX;
         
     }];
-    
-    
-    
 }
 
+#pragma mark - 移除 通知
 
 - (void)dealloc
 {

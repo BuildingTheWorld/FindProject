@@ -14,7 +14,7 @@
 #import "QTPinterestViewController.h"
 
 
-@interface FindViewController () <QTPageContentViewDelegate>
+@interface FindViewController ()
 
 @property (strong, nonatomic) QTPageTitleView *pageTitleView; // 标题栏View
 
@@ -34,8 +34,6 @@
         NSArray *titleArray = @[@"官方", @"用户"];
         
         _pageTitleView = [[QTPageTitleView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 34 * SCALE_6S_HEIGHT) titles:titleArray];
-        
-//        _pageTitleView.backgroundColor = [UIColor greenColor];
     }
     
     return _pageTitleView;
@@ -56,22 +54,21 @@
         
         _pageContentView.backgroundColor = [UIColor lightGrayColor];
         
-//        _pageContentView.delegate = self;
+
     }
     
     return _pageContentView;
 }
+
+#pragma mark - 系统回调
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-//    self.view.backgroundColor = [UIColor cyanColor];
-    
     [self setUpSubViews];
     
-//    self.pageContentView.delegate = self;
 }
 
 
@@ -84,23 +81,7 @@
     
     [self.view addSubview:self.pageContentView];
     
-    
 }
 
-#pragma mark - PageContentView Delegate
-
-//- (void)pageContentView:(UIView *)pageContentView setTitleIndex:(NSInteger)index
-//{
-//    // 调用 QTPageTitleView 对方暴露的方法
-//    
-//    [self.pageTitleView setTitleWithIndex:index];
-//}
-
-- (void)pageContentView:(UIView *)pageContentView setTitleIndex:(NSInteger)index
-{
-//    [self.pageTitleView setTitleWithIndex:index];
-
-    NSLog(@"----");
-}
 
 @end

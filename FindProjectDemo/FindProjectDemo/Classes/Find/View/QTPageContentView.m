@@ -8,7 +8,6 @@
 
 #import "QTPageContentView.h"
 
-//NSString * titleClick = @"titleClick";
 
 NSString *CellID = @"cellid";
 
@@ -20,11 +19,6 @@ NSString *CellID = @"cellid";
 @property (weak, nonatomic) UIViewController *parentVc;
 
 @property (strong, nonatomic) UICollectionView *pageCollectionView;
-
-//fileprivate var startOffsetX : CGFloat = 0
-
-//fileprivate var isForbidScrollDelegate : Bool = false
-
 
 @end
 
@@ -57,30 +51,21 @@ NSString *CellID = @"cellid";
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         
         flowLayout.itemSize = self.bounds.size;
-        
         flowLayout.minimumLineSpacing = 0;
-        
         flowLayout.minimumInteritemSpacing = 0;
-        
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
         
         _pageCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         
+        _pageCollectionView.dataSource = self;
+        _pageCollectionView.delegate = self;
+
+        _pageCollectionView.scrollsToTop = NO;
+        _pageCollectionView.bounces = NO;
         _pageCollectionView.showsHorizontalScrollIndicator = NO;
-        
         _pageCollectionView.pagingEnabled = YES;
         
-        _pageCollectionView.bounces = NO;
-        
-        _pageCollectionView.scrollsToTop = NO;
-        
-        _pageCollectionView.dataSource = self;
-        
-        _pageCollectionView.delegate = self;
-        
         [_pageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CellID];
-        
     }
     
     return _pageCollectionView;
@@ -91,7 +76,6 @@ NSString *CellID = @"cellid";
 
 - (void)setUpSubViews
 {
-    
     // 1.将所有的子控制器添加父控制器中
     
 //    for childVc in childVcs
@@ -105,7 +89,7 @@ NSString *CellID = @"cellid";
     
     self.pageCollectionView.frame = self.bounds;
     
-    // 监听 通知
+    // 监听 titleClick 通知
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"titleClick" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         
@@ -120,7 +104,7 @@ NSString *CellID = @"cellid";
     
 }
 
-#pragma mark - data source
+#pragma mark - collectionView data source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -147,14 +131,11 @@ NSString *CellID = @"cellid";
 }
 
 
-#pragma mark - delegate
+#pragma mark - scrollView delegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
-//    NSInteger i = scrollView.contentOffset.x / SCREEN_WIDTH;
-    
-    // 广播 通知 传值
+    // 广播 scrollView 通知
     
     NSDictionary *tempDict = [NSDictionary dictionaryWithObject:scrollView forKey:@"scrollView"];
     
@@ -162,6 +143,7 @@ NSString *CellID = @"cellid";
     
 }
 
+#pragma mark - 移除 通知
 
 - (void)dealloc
 {
