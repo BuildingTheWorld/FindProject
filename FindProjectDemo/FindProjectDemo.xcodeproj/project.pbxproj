@@ -22,7 +22,6 @@
 		0814072F1EBC90AF009AD987 /* QTPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0814072E1EBC90AF009AD987 /* QTPageContentView.m */; };
 		0836F6761EC02FCE005AE13A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0836F6751EC02FCE005AE13A /* UIView+Frame.m */; };
 		08CE84391EC176B20025D1EF /* QTOfficialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CE84371EC176B20025D1EF /* QTOfficialCollectionViewCell.m */; };
-		08CE843A1EC176B20025D1EF /* QTOfficialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CE84381EC176B20025D1EF /* QTOfficialCollectionViewCell.xib */; };
 		4F5575161C8F4C7077B55B9D /* libPods-FindProjectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094A6296B43289D44A3098D8 /* libPods-FindProjectDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +55,6 @@
 		0836F6751EC02FCE005AE13A /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		08CE84361EC176B20025D1EF /* QTOfficialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTOfficialCollectionViewCell.h; sourceTree = "<group>"; };
 		08CE84371EC176B20025D1EF /* QTOfficialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTOfficialCollectionViewCell.m; sourceTree = "<group>"; };
-		08CE84381EC176B20025D1EF /* QTOfficialCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QTOfficialCollectionViewCell.xib; sourceTree = "<group>"; };
 		094A6296B43289D44A3098D8 /* libPods-FindProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99ACE6E93F8B31054ABA1F36 /* Pods-FindProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindProjectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindProjectDemo/Pods-FindProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C4930563DA501FE4D0D18E28 /* Pods-FindProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindProjectDemo/Pods-FindProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			children = (
 				08CE84361EC176B20025D1EF /* QTOfficialCollectionViewCell.h */,
 				08CE84371EC176B20025D1EF /* QTOfficialCollectionViewCell.m */,
-				08CE84381EC176B20025D1EF /* QTOfficialCollectionViewCell.xib */,
 			);
 			name = collectionViewCell;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08CE843A1EC176B20025D1EF /* QTOfficialCollectionViewCell.xib in Resources */,
 				081406FB1EBC5C23009AD987 /* LaunchScreen.storyboard in Resources */,
 				081406F81EBC5C23009AD987 /* Assets.xcassets in Resources */,
 				081406F61EBC5C23009AD987 /* Main.storyboard in Resources */,
