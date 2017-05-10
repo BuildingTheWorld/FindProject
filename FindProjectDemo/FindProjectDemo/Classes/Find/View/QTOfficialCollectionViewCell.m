@@ -12,14 +12,10 @@
 
 @property (strong, nonatomic) UIImageView *topImageView;
 
-//@property (strong, nonatomic) UIView *testView;
-
 @end
 
 
 @implementation QTOfficialCollectionViewCell
-
-
 
 #pragma mark - init
 
@@ -34,15 +30,6 @@
         [self.contentView addSubview:topImageView];
         
         self.topImageView = topImageView;
-        
-        
-//        UIView *testView = [[UIView alloc] init];
-//        
-//        testView.backgroundColor = [UIColor redColor];
-//        
-//        self.testView = testView;
-//        
-//        [self.contentView addSubview:testView];
     }
     
     return self;
@@ -53,30 +40,19 @@
     [super layoutSubviews];
     
     [self.topImageView makeConstraints:^(MASConstraintMaker *make) {
+
+        make.top.equalTo(self.contentView);
         
-//        make.left.right.equalTo(self);
+        make.left.equalTo(self.contentView);
         
-        make.left.equalTo(self);
+        make.right.equalTo(self.contentView);
         
-        make.top.equalTo(self);
-        
-        make.right.equalTo(self);
-        
-//        make.width.offset(375 * SCALE_6S_WIDTH);
+        make.bottom.equalTo(self.contentView).offset(150 * SCALE_6S_HEIGHT).priority(100);
         
         make.height.offset(213 * SCALE_6S_HEIGHT);
         
-        make.bottom.equalTo(self).offset(120 * SCALE_6S_HEIGHT).priority(100);
-        
     }];
     
-    
-//    [self.testView makeConstraints:^(MASConstraintMaker *make) {
-//        
-//        make.left.top.equalTo(self).offset(30);
-//        
-//        make.bottom.right.equalTo(self).offset(-30);
-//    }];
 }
 
 - (void)awakeFromNib {

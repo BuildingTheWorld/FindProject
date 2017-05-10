@@ -75,7 +75,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [self.officialCollectionView dequeueReusableCellWithReuseIdentifier:@"officialCollectionViewCell" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"officialCollectionViewCell" forIndexPath:indexPath];
     
     cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0
                                                        green:arc4random_uniform(255) / 255.0

@@ -8,6 +8,8 @@
 
 #import "QTPinterestViewController.h"
 
+#import "QTPinterestCollectionViewCell.h"
+
 @interface QTPinterestViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionView *pinterestCollectionView;
@@ -24,7 +26,11 @@
     {
         UICollectionViewFlowLayout *pinteresLayout = [[UICollectionViewFlowLayout alloc] init];
         
-        pinteresLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
+        pinteresLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
+        
+//        pinteresLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
+        
+//        pinteresLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
         
         pinteresLayout.minimumLineSpacing = 0;
         
@@ -36,7 +42,9 @@
         
         _pinterestCollectionView.delegate = self;
         
-        [_pinterestCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"pinterestCollectionViewCell"];
+//        [_pinterestCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"pinterestCollectionViewCell"];
+        
+        [_pinterestCollectionView registerClass:[QTPinterestCollectionViewCell class] forCellWithReuseIdentifier:@"pinterestCollectionViewCell"];
     }
     
     return _pinterestCollectionView;
@@ -62,7 +70,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [self.pinterestCollectionView dequeueReusableCellWithReuseIdentifier:@"pinterestCollectionViewCell" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pinterestCollectionViewCell" forIndexPath:indexPath];
     
     cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0
                                                        green:arc4random_uniform(255) / 255.0

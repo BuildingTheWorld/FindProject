@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080C42201EC303B20025062D /* QTPinterestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 080C421F1EC303B20025062D /* QTPinterestCollectionViewCell.m */; };
 		081406ED1EBC5C23009AD987 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 081406EC1EBC5C23009AD987 /* main.m */; };
 		081406F01EBC5C23009AD987 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 081406EF1EBC5C23009AD987 /* AppDelegate.m */; };
 		081406F61EBC5C23009AD987 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081406F41EBC5C23009AD987 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080C421E1EC303B20025062D /* QTPinterestCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPinterestCollectionViewCell.h; sourceTree = "<group>"; };
+		080C421F1EC303B20025062D /* QTPinterestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPinterestCollectionViewCell.m; sourceTree = "<group>"; };
 		081406E81EBC5C23009AD987 /* FindProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		081406EC1EBC5C23009AD987 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		081406EE1EBC5C23009AD987 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 			children = (
 				08CE84361EC176B20025D1EF /* QTOfficialCollectionViewCell.h */,
 				08CE84371EC176B20025D1EF /* QTOfficialCollectionViewCell.m */,
+				080C421E1EC303B20025062D /* QTPinterestCollectionViewCell.h */,
+				080C421F1EC303B20025062D /* QTPinterestCollectionViewCell.m */,
 			);
 			name = collectionViewCell;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				081407271EBC8A6D009AD987 /* ViewController.m in Sources */,
 				081407241EBC8A6D009AD987 /* FindViewController.m in Sources */,
 				081406F01EBC5C23009AD987 /* AppDelegate.m in Sources */,
+				080C42201EC303B20025062D /* QTPinterestCollectionViewCell.m in Sources */,
 				081407251EBC8A6D009AD987 /* QTOfficialViewController.m in Sources */,
 				081407281EBC8A6D009AD987 /* UIColor+Hex.m in Sources */,
 				08CE84391EC176B20025D1EF /* QTOfficialCollectionViewCell.m in Sources */,

@@ -22,6 +22,7 @@
 #import "UIColor+Hex.h"
 
 // 屏幕宽高
+
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -31,6 +32,7 @@
 #define SCALE_6S_HEIGHT [UIScreen mainScreen].bounds.size.height / 667.0f
 
 // 颜色
+
 #define RandomColor RGBColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
 
