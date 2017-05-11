@@ -26,11 +26,11 @@
     {
         UICollectionViewFlowLayout *pinteresLayout = [[UICollectionViewFlowLayout alloc] init];
         
-        pinteresLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
+//        pinteresLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
         
-//        pinteresLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
+        pinteresLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
         
-//        pinteresLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
+        pinteresLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
         
         pinteresLayout.minimumLineSpacing = 0;
         
