@@ -22,7 +22,7 @@
 {
     if (_topImageView == nil) {
         _topImageView = [[UIImageView alloc] init];
-        
+#warning model data
         _topImageView.image = [UIImage imageNamed:@"top_image"];
     }
     

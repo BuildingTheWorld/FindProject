@@ -71,9 +71,26 @@
     
     [self setUpSubViews];
     
+    [self setUpNavigationBar];
+    
 }
 
+#pragma mark - setUpNavigationBar
 
+- (void)setUpNavigationBar
+{
+    UIColor *navColor = [UIColor colorWithHexValue:0xFBFAFA alpha:1];
+    
+    UIImage *navImage = [UIImage imageWithColor:navColor];
+    
+    [self.navigationController.navigationBar setBackgroundImage:navImage forBarMetrics:UIBarMetricsDefault];
+    
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
+    self.navigationController.navigationBar.translucent = NO;
+    
+    self.navigationItem.title = @"青酱说";
+}
 
 #pragma mark - setUpSubViews
 

@@ -32,10 +32,15 @@ NSString *CellID = @"cellid";
     if (self = [super initWithFrame:frame])
     {
         self.childVcArray = childVcArray;
+        
         self.parentVc = parentController;
+        
+        NSLog(@"%@\n%@",self.childVcArray, self.parentVc);
     }
     
     [self setUpSubViews];
+    
+    
     
     return self;
 }
@@ -82,6 +87,11 @@ NSString *CellID = @"cellid";
 //    {
 //        parentViewController?.addChildViewController(childVc)
 //    }
+    
+    for (UIViewController *childVC in self.childVcArray)
+    {
+        [self.parentVc addChildViewController:childVC];
+    }
     
     // 添加collectionView
     

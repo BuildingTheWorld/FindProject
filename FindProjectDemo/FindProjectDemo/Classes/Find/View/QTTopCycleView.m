@@ -10,7 +10,7 @@
 
 #import "QTTopCollectionViewCell.h"
 
-@interface QTTopCycleView () <UICollectionViewDataSource>
+@interface QTTopCycleView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
 
@@ -49,9 +49,9 @@
     if (_cycleCollectionView == nil) {
         
         _cycleCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
-#warning TODO
+
         _cycleCollectionView.dataSource = self;
-        
+        _cycleCollectionView.delegate = self;
         _cycleCollectionView.pagingEnabled = YES;
         
         [_cycleCollectionView registerClass:[QTTopCollectionViewCell class] forCellWithReuseIdentifier:@"topCollectionViewCell"];
@@ -90,7 +90,8 @@
         _pageCountLabel = [[UILabel alloc] init];
         _pageCountLabel.textColor = [UIColor colorWithHexValue:0xFFFFFF alpha:1];
         _pageCountLabel.font = [UIFont systemFontOfSize:12];
-        _pageCountLabel.text = @"2/4";
+#warning model data
+        _pageCountLabel.text = @"1/4";
     }
 
     return _pageCountLabel;
@@ -132,10 +133,6 @@
             
         }];
         
-        
-        
-        
-        
     }
     
     return self;
@@ -153,6 +150,15 @@
     QTTopCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"topCollectionViewCell" forIndexPath:indexPath];
     
     return cell;
+}
+
+#pragma mark - delegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    int i = scrollView.contentOffset.x / SCREEN_WIDTH;
+    
+    self.pageCountLabel.text = [NSString stringWithFormat:@"%d/4",i + 1];
 }
 
 

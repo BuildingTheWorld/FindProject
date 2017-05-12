@@ -10,6 +10,8 @@
 
 #import "QTPinterestCollectionViewCell.h"
 
+#import "QTDetailViewController.h"
+
 @interface QTPinterestViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionView *pinterestCollectionView;
@@ -72,15 +74,22 @@
 {
     QTPinterestCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pinterestCollectionViewCell" forIndexPath:indexPath];
     
-    cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0
-                                                       green:arc4random_uniform(255) / 255.0
-                                                        blue:arc4random_uniform(255) / 255.0
-                                                       alpha:1];
+//    cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0
+//                                                       green:arc4random_uniform(255) / 255.0
+//                                                        blue:arc4random_uniform(255) / 255.0
+//                                                       alpha:1];
     
     return cell;
 }
 
 #pragma mark - pinterestCollectionView delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    QTDetailViewController *detailVC = [[QTDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 
 
 
