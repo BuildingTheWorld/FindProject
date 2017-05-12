@@ -8,11 +8,11 @@
 
 #import "QTPinterestCollectionViewCell.h"
 
-@interface QTPinterestCollectionViewCell () <UICollectionViewDataSource>
+#import "QTTopCycleView.h"
 
-@property (strong, nonatomic) UICollectionViewFlowLayout *topFlowLayout;
+@interface QTPinterestCollectionViewCell ()
 
-@property (strong, nonatomic) UICollectionView *topCollectionView;
+@property (strong, nonatomic) QTTopCycleView *topCycleView;
 
 @property (strong, nonatomic) UIImageView *iconImageView;
 
@@ -40,54 +40,24 @@
 
 @implementation QTPinterestCollectionViewCell
 
-
 #pragma mark - lazy
 
-
-- (UICollectionViewFlowLayout *)topFlowLayout
+- (QTTopCycleView *)topCycleView
 {
-    if (_topFlowLayout == nil) {
+    if (_topCycleView == nil) {
         
-        _topFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-        
-#warning TODO
-        
-        _topFlowLayout.itemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH);
-        
-        _topFlowLayout.minimumLineSpacing = 0;
-        _topFlowLayout.minimumInteritemSpacing = 0;
-        
-        _topFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
+        _topCycleView = [[QTTopCycleView alloc] init];
     }
     
-    return _topFlowLayout;
-}
-
-- (UICollectionView *)topCollectionView
-{
-    if (_topCollectionView == nil) {
-        _topCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.topFlowLayout];
-        
-        _topCollectionView.dataSource = self;
-        
-        _topCollectionView.pagingEnabled = YES;
-        
-        [_topCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"topCollectionViewCell"];
-    }
-    
-    return _topCollectionView;
+    return _topCycleView;
 }
 
 - (UIImageView *)iconImageView
 {
     if (_iconImageView == nil) {
         _iconImageView = [[UIImageView alloc] init];
-        
-//        _iconImageView.layer.masksToBounds = YES;
-//        
-//        _iconImageView.layer.cornerRadius = 20;
-        
+        _iconImageView.layer.masksToBounds = YES;
+        _iconImageView.layer.cornerRadius = 20;
     }
     
     return _iconImageView;
@@ -147,6 +117,7 @@
         _likeLabel = [[UILabel alloc] init];
         _likeLabel.font = [UIFont systemFontOfSize:11];
         _likeLabel.textColor = [UIColor colorWithHexValue:0x949494 alpha:1];
+        
         _likeLabel.text = @"23";
     }
     
@@ -213,212 +184,171 @@
 
 #pragma mark - init
 
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         
-        // topCollectionView
-        [self.contentView addSubview:self.topCollectionView];
+        // topCycleView
+        [self.contentView addSubview:self.topCycleView];
+        [self.topCycleView makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.width.offset(SCREEN_WIDTH);
+            
+            make.height.offset(SCREEN_WIDTH);
+            
+            make.top.equalTo(self.contentView);
+            
+            make.left.equalTo(self.contentView);
+            
+        }];
         
         // icon
         [self.contentView addSubview:self.iconImageView];
+        [self.iconImageView makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.top.equalTo(self.topCycleView.bottom).offset(24 * SCALE_6S_HEIGHT);
+            
+            make.left.equalTo(self.contentView).offset(24 * SCALE_6S_WIDTH);
+            
+            make.width.offset(40);
+            
+            make.height.offset(40);
+            
+        }];
         
         // name
         [self.contentView addSubview:self.nameLabel];
+        [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.left.equalTo(self.iconImageView.right).offset(6);
+            
+            make.top.equalTo(self.iconImageView);
+            
+        }];
         
         // time
         [self.contentView addSubview:self.timeLable];
+        [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.left.equalTo(self.iconImageView.right).offset(6);
+            
+            make.bottom.equalTo(self.iconImageView);
+            
+        }];
         
         // abstract
         [self.contentView addSubview:self.abstractLabel];
+        [self.abstractLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.width.equalTo(325 * SCALE_6S_WIDTH);
+            
+            make.top.equalTo(self.iconImageView.bottom).offset(24);
+            
+            make.centerX.equalTo(self.contentView);
+            
+            //        make.bottom.equalTo(self.contentView).offset(-120);
+        }];
         
         // likeImageView
         [self.contentView addSubview:self.likeImageView];
+        [self.likeImageView makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.width.offset(14);
+            
+            make.height.offset(12);
+            
+            
+            make.top.equalTo(self.abstractLabel.bottom).offset(40);
+            
+            make.left.equalTo(self.contentView).offset(22);
+            
+            make.bottom.equalTo(self.contentView).offset(-25);
+            
+        }];
         
         // likeLabel
         [self.contentView addSubview:self.likeLabel];
+        [self.likeLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.left.equalTo(self.likeImageView.right).offset(4);
+            
+            make.centerY.equalTo(self.likeImageView.centerY);
+            
+        }];
         
         // PVImageView
         [self.contentView addSubview:self.PVImageView];
+        [self.PVImageView makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.width.offset(18);
+            
+            make.height.offset(12);
+            
+            make.left.equalTo(self.likeLabel.right).offset(4);
+            
+            make.centerY.equalTo(self.likeImageView.centerY);
+            
+        }];
         
         // PVLabel
         [self.contentView addSubview:self.PVLabel];
+        [self.PVLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.left.equalTo(self.PVImageView.right).offset(4);
+            
+            make.centerY.equalTo(self.likeImageView.centerY);
+            
+        }];
         
         // commentImageView
         [self.contentView addSubview:self.commentImageView];
+        [self.commentImageView makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.width.offset(14);
+            
+            make.height.offset(12);
+            
+            make.left.equalTo(self.PVLabel.right).offset(4);
+            
+            make.centerY.equalTo(self.likeImageView.centerY);
+            
+        }];
         
         // commentLabel
         [self.contentView addSubview:self.commentLabel];
+        [self.commentLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.left.equalTo(self.commentImageView.right).offset(4);
+            
+            make.centerY.equalTo(self.likeImageView.centerY);
+        }];
         
         // moreLabel
         [self.contentView addSubview:self.moreLabel];
+        [self.moreLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.centerY.equalTo(self.likeImageView.centerY);
+            
+            make.right.equalTo(self.contentView).offset(-22);
+            
+        }];
+        
     }
     
     return self;
 }
-
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    [self.topCollectionView makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.top.equalTo(self.contentView);
-        
-        make.left.equalTo(self.contentView);
-    
-        make.height.offset(SCREEN_WIDTH);
-        
-        make.width.offset(SCREEN_WIDTH);
-        
-    }];
-    
-    [self.iconImageView makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.top.equalTo(self.topCollectionView.bottom).offset(24 * SCALE_6S_HEIGHT);
-        
-        make.left.equalTo(self.contentView).offset(24 * SCALE_6S_WIDTH);
-        
-        make.width.offset(40);
-        
-        make.height.offset(40);
-        
-    }];
-    
-    [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.left.equalTo(self.iconImageView.right).offset(6);
-        
-        make.top.equalTo(self.iconImageView);
-        
-    }];
-    
-    [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.left.equalTo(self.iconImageView.right).offset(6);
-        
-        make.bottom.equalTo(self.iconImageView);
-        
-    }];
-    
-    [self.abstractLabel makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.width.equalTo(325 * SCALE_6S_WIDTH);
-    
-        make.top.equalTo(self.iconImageView.bottom).offset(24);
-        
-        make.centerX.equalTo(self.contentView);
-        
-//        make.bottom.equalTo(self.contentView).offset(-120);
-    }];
-    
-    [self.likeImageView makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.width.offset(14);
-        
-        make.height.offset(12);
-        
-        
-        make.top.equalTo(self.abstractLabel.bottom).offset(40);
-        
-        make.left.equalTo(self.contentView).offset(22);
-        
-        make.bottom.equalTo(self.contentView).offset(-25);
-        
-    }];
-    
-    [self.likeLabel makeConstraints:^(MASConstraintMaker *make) {
-    
-        
-        make.left.equalTo(self.likeImageView.right).offset(4);
-        
-        make.centerY.equalTo(self.likeImageView.centerY);
-        
-    }];
-    
-    [self.PVImageView makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.width.offset(18);
-        
-        make.height.offset(12);
-        
-        make.left.equalTo(self.likeLabel.right).offset(4);
-        
-        make.centerY.equalTo(self.likeImageView.centerY);
-        
-    }];
-    
-    [self.PVLabel makeConstraints:^(MASConstraintMaker *make) {
-        
-        
-        make.left.equalTo(self.PVImageView.right).offset(4);
-        
-        make.centerY.equalTo(self.likeImageView.centerY);
-        
-    }];
-    
-    [self.commentImageView makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.width.offset(14);
-        
-        make.height.offset(12);
-        
-        make.left.equalTo(self.PVLabel.right).offset(4);
-        
-        make.centerY.equalTo(self.likeImageView.centerY);
-        
-    }];
-    
-    [self.commentLabel makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.left.equalTo(self.commentImageView.right).offset(4);
-        
-        make.centerY.equalTo(self.likeImageView.centerY);
-    }];
-    
-    [self.moreLabel makeConstraints:^(MASConstraintMaker *make) {
-       
-        
-        make.centerY.equalTo(self.likeImageView.centerY);
-        
-        make.right.equalTo(self.contentView).offset(-22);
-        
-    }];
-    
-}
-
-
-#pragma mark - topCollectionView datasource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 4;
-}
-
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"topCollectionViewCell" forIndexPath:indexPath];
-    
-    cell.contentView.backgroundColor = [UIColor whiteColor];
-    
-    return cell;
-}
-
-
-
-
-
 
 
 @end
