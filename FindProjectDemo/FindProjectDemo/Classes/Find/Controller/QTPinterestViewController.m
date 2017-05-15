@@ -88,6 +88,8 @@
 {
     QTDetailViewController *detailVC = [[QTDetailViewController alloc] init];
     
+    detailVC.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
