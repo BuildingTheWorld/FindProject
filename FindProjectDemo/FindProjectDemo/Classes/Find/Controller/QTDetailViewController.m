@@ -226,7 +226,7 @@ static NSString * const CellID = @"CellID";
         
 //        NSLog(@"%f",ceil(articleLabelH));
         
-        CGFloat articleViewH = SCALE_6S_HEIGHT * (375 + 23 + 40 + 27 + ceil(articleLabelH)) + 15;
+        CGFloat articleViewH = SCALE_6S_HEIGHT * (375 + 23 + 40 + 27 + 20) + ceil(articleLabelH);
         
         _articleView.frame = CGRectMake(0, 0, SCREEN_WIDTH, articleViewH);
     }
