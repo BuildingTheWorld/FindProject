@@ -52,7 +52,7 @@
         _commentLabel.numberOfLines = 0;
         _commentLabel.font = [UIFont systemFontOfSize:11];
         _commentLabel.textColor = [UIColor colorWithHexValue:0x6A6767 alpha:1];
-#warning TODO        
+#warning TODO
         _commentLabel.text = @"超级棒棒棒,不得不点赞.超级棒棒棒,不得不点赞.超级棒棒棒";
     }
     
