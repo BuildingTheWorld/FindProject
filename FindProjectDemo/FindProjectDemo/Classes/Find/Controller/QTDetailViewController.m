@@ -30,6 +30,8 @@ static NSString * const CellID = @"CellID";
 
 @property (strong, nonatomic) UITableView *commentTableView;
 
+@property (strong, nonatomic) UIView *bottomView;
+
 @end
 
 @implementation QTDetailViewController
@@ -257,16 +259,75 @@ static NSString * const CellID = @"CellID";
     return _commentTableView;
 }
 
+- (UIView *)bottomView
+{
+    if (_bottomView == nil) {
+        _bottomView = [[UIView alloc] init];
+        _bottomView.backgroundColor = [UIColor colorWithHexValue:0xF9F9F9 alpha:1];
+        
+        UITextField *textField = [[UITextField alloc] init];
+        
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+        
+        textField.backgroundColor = [UIColor colorWithHexValue:0xEBEBEB alpha:1];
+        
+        textField.font = [UIFont systemFontOfSize:12];
+        
+        textField.placeholder = @"说点什么吧";
+        
+        [_bottomView addSubview:textField];
+        
+        [textField makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.width.offset(217);
+            
+            make.left.equalTo(_bottomView.left).offset(12 * SCALE_6S_WIDTH);
+            
+            make.centerY.equalTo(_bottomView.centerY);
+        }];
+    }
+    
+    return _bottomView;
+}
+
+
+
 #pragma mark - view life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+//    self.commentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
     
     [self.view addSubview:self.commentTableView];
     
-    self.commentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+    [self.commentTableView makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.width.offset(SCREEN_WIDTH);
+        
+        make.height.offset(SCREEN_HEIGHT - 64);
+        
+        make.top.equalTo(self.view);
+        
+        make.left.equalTo(self.view);
+        
+    }];
+    
+    [self.view addSubview:self.bottomView];
+    
+    [self.bottomView makeConstraints:^(MASConstraintMaker *make) {
+        
+       
+        make.width.offset(SCREEN_WIDTH);
+        
+        make.height.offset(45 * SCALE_6S_HEIGHT);
+        
+        make.bottom.equalTo(self.view.bottom);
+        
+        make.centerX.equalTo(self.view.centerX);
+    }];
+    
 }
 
 #pragma mark - commentTableView data source
