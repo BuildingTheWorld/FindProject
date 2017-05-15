@@ -35,7 +35,7 @@ NSString *CellID = @"cellid";
         
         self.parentVc = parentController;
         
-        NSLog(@"%@\n%@",self.childVcArray, self.parentVc);
+//        NSLog(@"%@\n%@",self.childVcArray, self.parentVc);
     }
     
     [self setUpSubViews];
