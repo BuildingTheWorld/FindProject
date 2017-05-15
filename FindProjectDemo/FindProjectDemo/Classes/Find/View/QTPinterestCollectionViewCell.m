@@ -103,7 +103,7 @@
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         
-        paragraphStyle.lineSpacing = 12;
+        paragraphStyle.lineSpacing = 10;
         
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributedString.length)];
         

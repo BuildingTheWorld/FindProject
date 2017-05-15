@@ -24,6 +24,8 @@ static NSString * const CellID = @"CellID";
 
 @property (strong, nonatomic) UILabel *articleLabel;
 
+@property (strong, nonatomic) UIView *separatorView;
+
 @property (strong, nonatomic) UIView *articleView;
 
 @property (strong, nonatomic) UITableView *commentTableView;
@@ -85,7 +87,7 @@ static NSString * const CellID = @"CellID";
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         
-        paragraphStyle.lineSpacing = 12;
+        paragraphStyle.lineSpacing = 7;
         
         paragraphStyle.alignment = NSTextAlignmentJustified;
         
@@ -93,7 +95,7 @@ static NSString * const CellID = @"CellID";
         
 //        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, attributedString.length)];
         
-        NSDictionary *attributesDict = @{NSFontAttributeName : [UIFont systemFontOfSize:15],
+        NSDictionary *attributesDict = @{NSFontAttributeName : [UIFont systemFontOfSize:13],
                                NSParagraphStyleAttributeName : paragraphStyle};
         
         [attributedString addAttributes:attributesDict range:NSMakeRange(0, attributedString.length)];
@@ -111,6 +113,16 @@ static NSString * const CellID = @"CellID";
     }
     
     return _articleLabel;
+}
+
+- (UIView *)separatorView
+{
+    if (_separatorView == nil) {
+        _separatorView = [[UIView alloc] init];
+        _separatorView.backgroundColor = [UIColor colorWithHexValue:0xE5E5E5 alpha:1];
+    }
+    
+    return _separatorView;
 }
 
 - (UIView *)articleView
@@ -193,9 +205,28 @@ static NSString * const CellID = @"CellID";
         
         CGFloat articleLabelH = [self.articleLabel.attributedText boundingRectWithSize:CGSizeMake(328 * SCALE_6S_WIDTH, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingUsesDeviceMetrics context:nil].size.height;
         
+        // separatorView
+        
+        [_articleView addSubview:self.separatorView];
+        
+        [self.separatorView makeConstraints:^(MASConstraintMaker *make) {
+            
+           
+            make.width.offset(SCREEN_WIDTH);
+            
+            make.height.offset(1);
+            
+            make.bottom.equalTo(_articleView.bottom);
+            
+            make.centerX.equalTo(_articleView.centerX);
+            
+        }];
+        
         // 375 + 23 + 40 + 27 + height
         
-        CGFloat articleViewH = SCALE_6S_HEIGHT * (375 + 23 + 40 + 27 + ceil(articleLabelH));
+//        NSLog(@"%f",ceil(articleLabelH));
+        
+        CGFloat articleViewH = SCALE_6S_HEIGHT * (375 + 23 + 40 + 27 + ceil(articleLabelH)) + 15;
         
         _articleView.frame = CGRectMake(0, 0, SCREEN_WIDTH, articleViewH);
     }
@@ -219,7 +250,7 @@ static NSString * const CellID = @"CellID";
         
         _commentTableView.tableHeaderView = self.articleView;
         
-
+        _commentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
     }
     
@@ -232,16 +263,17 @@ static NSString * const CellID = @"CellID";
     [super viewDidLoad];
 
     
+    
     [self.view addSubview:self.commentTableView];
     
-    self.commentTableView.frame = self.view.bounds;
+    self.commentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
 }
 
 #pragma mark - commentTableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

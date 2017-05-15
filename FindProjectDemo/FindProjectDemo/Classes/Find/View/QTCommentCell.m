@@ -65,10 +65,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        
-        self.contentView.backgroundColor = [UIColor cyanColor];
-        
-        
+                
         // icon
         [self.contentView addSubview:self.iconImageView];
         
