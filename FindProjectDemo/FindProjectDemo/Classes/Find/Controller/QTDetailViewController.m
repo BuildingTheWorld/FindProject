@@ -12,7 +12,7 @@
 
 static NSString * const CellID = @"CellID";
 
-@interface QTDetailViewController () <UITableViewDataSource>
+@interface QTDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *commentTableView;
 
@@ -28,9 +28,13 @@ static NSString * const CellID = @"CellID";
         _commentTableView = [[UITableView alloc] init];
         
         _commentTableView.dataSource = self;
-//        _commentTableView.delegate = self;
+        _commentTableView.delegate = self;
         
         [_commentTableView registerClass:[QTCommentCell class] forCellReuseIdentifier:CellID];
+        
+        _commentTableView.rowHeight = UITableViewAutomaticDimension;
+        
+        _commentTableView.estimatedRowHeight = 60 * SCALE_6S_HEIGHT;
     }
     
     return _commentTableView;
@@ -61,5 +65,9 @@ static NSString * const CellID = @"CellID";
     
     return cell;
 }
+
+#pragma mark - commentTableView delegate
+
+
 
 @end
