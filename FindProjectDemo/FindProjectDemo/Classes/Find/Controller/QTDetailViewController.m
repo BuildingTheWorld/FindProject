@@ -34,15 +34,17 @@ static NSString * const CellID = @"CellID";
 
 @property (strong, nonatomic) UIButton *likeButton;
 
-@property (strong, nonatomic) UILabel *likeLabel;
+//@property (strong, nonatomic) UILabel *likeLabel;
 
 @property (strong, nonatomic) UIButton *commentCountButton;
 
-@property (strong, nonatomic) UILabel *commentCountLabel;
+//@property (strong, nonatomic) UILabel *commentCountLabel;
 
 @property (strong, nonatomic) UIView *bottomView;
 
 @property (strong, nonatomic) UITapGestureRecognizer *singleTapGR;
+
+@property (assign, nonatomic) CGFloat articleViewH;
 
 @end
 
@@ -242,6 +244,8 @@ static NSString * const CellID = @"CellID";
         
         CGFloat articleViewH = SCALE_6S_HEIGHT * (375 + 23 + 40 + 27 + 20) + ceil(articleLabelH);
         
+        self.articleViewH = articleViewH;
+        
         _articleView.frame = CGRectMake(0, 0, SCREEN_WIDTH, articleViewH);
     }
     
@@ -321,6 +325,8 @@ static NSString * const CellID = @"CellID";
     button.selected = !button.isSelected;
 }
 
+/*
+
 - (UILabel *)likeLabel
 {
     if (_likeLabel == nil) {
@@ -333,6 +339,8 @@ static NSString * const CellID = @"CellID";
     return _likeLabel;
 }
 
+*/
+ 
 - (UIButton *)commentCountButton
 {
     if (_commentCountButton == nil) {
@@ -351,8 +359,10 @@ static NSString * const CellID = @"CellID";
 
 - (void)commentButtonClick:(UIButton *)button
 {
-    
+    [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
 }
+
+/*
 
 - (UILabel *)commentCountLabel
 {
@@ -366,6 +376,8 @@ static NSString * const CellID = @"CellID";
     return _commentCountLabel;
 }
 
+*/
+
 - (UIView *)bottomView
 {
     if (_bottomView == nil) {
@@ -373,6 +385,7 @@ static NSString * const CellID = @"CellID";
         _bottomView.backgroundColor = [UIColor colorWithHexValue:0xF9F9F9 alpha:1];
         
         // comment TextField
+        
         [_bottomView addSubview:self.commentTextField];
         [self.commentTextField makeConstraints:^(MASConstraintMaker *make) {
             
@@ -385,6 +398,7 @@ static NSString * const CellID = @"CellID";
         }];
         
         // like button
+        
         [_bottomView addSubview:self.likeButton];
         [self.likeButton makeConstraints:^(MASConstraintMaker *make) {
             
@@ -395,7 +409,6 @@ static NSString * const CellID = @"CellID";
         }];
         
         // like label
-        
         /*
         
         [_bottomView addSubview:self.likeLabel];
@@ -410,6 +423,7 @@ static NSString * const CellID = @"CellID";
         */
         
         // commentCount button
+        
         [_bottomView addSubview:self.commentCountButton];
         [self.commentCountButton makeConstraints:^(MASConstraintMaker *make) {
             
@@ -421,7 +435,6 @@ static NSString * const CellID = @"CellID";
         }];
         
         // commentCount label
-        
         /*
         
         [_bottomView addSubview:self.commentCountLabel];
@@ -439,7 +452,6 @@ static NSString * const CellID = @"CellID";
     
     return _bottomView;
 }
-
 
 
 #pragma mark - view life cycle
@@ -483,7 +495,7 @@ static NSString * const CellID = @"CellID";
 
 - (void)tapAnywhereToDismissKeyboard:(UIGestureRecognizer *)gestureRecognizer
 {
-    //此method会将self.view里所有的subview的first responder都resign掉
+    //此方法会将 self.view 里所有的 subview 的 first responder 都 resign
 
     [self.view endEditing:YES];
 }
@@ -541,7 +553,7 @@ static NSString * const CellID = @"CellID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -557,12 +569,15 @@ static NSString * const CellID = @"CellID";
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    /*
     
-//    if (![textField.textInputMode.primaryLanguage isEqualToString:@"zh-Hans"] && ![textField.textInputMode.primaryLanguage isEqualToString:@"en-US"])
-//    {
-//        return NO;
-//    }
+    if (![textField.textInputMode.primaryLanguage isEqualToString:@"zh-Hans"] && ![textField.textInputMode.primaryLanguage isEqualToString:@"en-US"])
+    {
+        return NO;
+    }
     
+     */
+     
     return YES;
 }
 
