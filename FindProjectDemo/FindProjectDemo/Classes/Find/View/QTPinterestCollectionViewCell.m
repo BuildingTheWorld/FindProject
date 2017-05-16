@@ -278,10 +278,9 @@
         [self.likeImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.width.offset(14);
+            make.width.offset(13);
             
-            make.height.offset(12);
-            
+            make.height.offset(11);
             
             make.top.equalTo(self.abstractLabel.bottom).offset(40);
             
@@ -307,9 +306,9 @@
         [self.PVImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.width.offset(18);
+            make.width.offset(15);
             
-            make.height.offset(12);
+            make.height.offset(11);
             
             make.left.equalTo(self.likeLabel.right).offset(4);
             
@@ -333,9 +332,9 @@
         [self.commentImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.width.offset(14);
+            make.width.offset(13);
             
-            make.height.offset(12);
+            make.height.offset(13);
             
             make.left.equalTo(self.PVLabel.right).offset(4);
             

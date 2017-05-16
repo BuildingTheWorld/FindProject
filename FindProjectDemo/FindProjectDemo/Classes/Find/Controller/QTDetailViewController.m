@@ -30,6 +30,16 @@ static NSString * const CellID = @"CellID";
 
 @property (strong, nonatomic) UITableView *commentTableView;
 
+@property (strong, nonatomic) UITextField *commentTextField;
+
+@property (strong, nonatomic) UIButton *likeButton;
+
+@property (strong, nonatomic) UILabel *likeLabel;
+
+@property (strong, nonatomic) UIButton *commentCountButton;
+
+@property (strong, nonatomic) UILabel *commentCountLabel;
+
 @property (strong, nonatomic) UIView *bottomView;
 
 @property (strong, nonatomic) UITapGestureRecognizer *singleTapGR;
@@ -263,40 +273,168 @@ static NSString * const CellID = @"CellID";
     return _commentTableView;
 }
 
+- (UITextField *)commentTextField
+{
+    if (_commentTextField == nil)
+    {
+        _commentTextField = [[UITextField alloc] init];
+        
+        _commentTextField.delegate = self;
+        
+        _commentTextField.borderStyle = UITextBorderStyleRoundedRect;
+        
+        _commentTextField.backgroundColor = [UIColor colorWithHexValue:0xEBEBEB alpha:1];
+        
+        _commentTextField.font = [UIFont systemFontOfSize:12];
+        
+        _commentTextField.placeholder = @"说点什么吧";
+        
+        _commentTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        
+        _commentTextField.leftViewMode = UITextFieldViewModeAlways;
+        
+        _commentTextField.returnKeyType = UIReturnKeySend;
+    }
+    
+    return _commentTextField;
+}
+
+- (UIButton *)likeButton
+{
+    if (_likeButton == nil) {
+        _likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [_likeButton setImage:[UIImage imageNamed:@"like_normal"] forState:UIControlStateNormal];
+        [_likeButton setImage:[UIImage imageNamed:@"like_selected"] forState:UIControlStateSelected];
+        
+        [_likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    
+    return _likeButton;
+}
+
+#warning likeButtonClick:
+
+- (void)likeButtonClick:(UIButton *)button
+{
+    button.selected = !button.isSelected;
+}
+
+- (UILabel *)likeLabel
+{
+    if (_likeLabel == nil) {
+        _likeLabel = [[UILabel alloc] init];
+        _likeLabel.font = [UIFont systemFontOfSize:12];
+        _likeLabel.textColor = [UIColor colorWithHexValue:0xADADAD alpha:1];
+        _likeLabel.text = @"喜欢";
+    }
+    
+    return _likeLabel;
+}
+
+- (UIButton *)commentCountButton
+{
+    if (_commentCountButton == nil) {
+        _commentCountButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [_commentCountButton setImage:[UIImage imageNamed:@"commentImage"] forState:UIControlStateNormal];
+        
+        [_commentCountButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    
+    return _commentCountButton;
+}
+
+#warning commentButtonClick:
+
+- (void)commentButtonClick:(UIButton *)button
+{
+    
+}
+
+- (UILabel *)commentCountLabel
+{
+    if (_commentCountLabel == nil) {
+        _commentCountLabel = [[UILabel alloc] init];
+        _commentCountLabel.font = [UIFont systemFontOfSize:12];
+        _commentCountLabel.textColor = [UIColor colorWithHexValue:0xADADAD alpha:1];
+        _commentCountLabel.text = @"评论";
+    }
+    
+    return _commentCountLabel;
+}
+
 - (UIView *)bottomView
 {
     if (_bottomView == nil) {
         _bottomView = [[UIView alloc] init];
         _bottomView.backgroundColor = [UIColor colorWithHexValue:0xF9F9F9 alpha:1];
         
-        UITextField *textField = [[UITextField alloc] init];
-        
-        textField.delegate = self;
-        
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-        
-        textField.backgroundColor = [UIColor colorWithHexValue:0xEBEBEB alpha:1];
-        
-        textField.font = [UIFont systemFontOfSize:12];
-        
-        textField.placeholder = @"说点什么吧";
-        
-        textField.leftView           = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-        
-        textField.leftViewMode       = UITextFieldViewModeAlways;
-        
-        
-        [_bottomView addSubview:textField];
-        
-        [textField makeConstraints:^(MASConstraintMaker *make) {
+        // comment TextField
+        [_bottomView addSubview:self.commentTextField];
+        [self.commentTextField makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.width.offset(217);
+            make.width.offset(264 * SCALE_6S_WIDTH);
             
             make.left.equalTo(_bottomView.left).offset(12 * SCALE_6S_WIDTH);
             
             make.centerY.equalTo(_bottomView.centerY);
         }];
+        
+        // like button
+        [_bottomView addSubview:self.likeButton];
+        [self.likeButton makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.width.offset(18);
+            make.height.offset(16);
+            make.centerY.equalTo(_bottomView.centerY);
+            make.left.equalTo(self.commentTextField.right).offset(22 * SCALE_6S_WIDTH);
+        }];
+        
+        // like label
+        
+        /*
+        
+        [_bottomView addSubview:self.likeLabel];
+        [self.likeLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerY.equalTo(_bottomView.centerY);
+            
+            make.left.equalTo(self.likeButton.right).offset(18);
+            
+        }];
+        
+        */
+        
+        // commentCount button
+        [_bottomView addSubview:self.commentCountButton];
+        [self.commentCountButton makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.width.height.offset(18);
+            
+            make.centerY.equalTo(_bottomView.centerY);
+            
+            make.left.equalTo(self.likeButton.right).offset(22 * SCALE_6S_WIDTH);
+        }];
+        
+        // commentCount label
+        
+        /*
+        
+        [_bottomView addSubview:self.commentCountLabel];
+        [self.commentCountLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerY.equalTo(_bottomView.centerY);
+            
+            make.left.equalTo(self.commentCountButton.right).offset(18);
+            
+        }];
+        
+        */
+        
     }
     
     return _bottomView;
@@ -417,6 +555,26 @@ static NSString * const CellID = @"CellID";
 
 #pragma mark - TextField Delegate
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+//    if (![textField.textInputMode.primaryLanguage isEqualToString:@"zh-Hans"] && ![textField.textInputMode.primaryLanguage isEqualToString:@"en-US"])
+//    {
+//        return NO;
+//    }
+    
+    return YES;
+}
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+#warning 发送评论网络请求
+    
+    
+    [self.view endEditing:YES];
+    
+    return YES;
+}
 
 @end
