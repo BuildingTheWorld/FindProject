@@ -261,8 +261,6 @@ static NSString * const CellID = @"CellID";
         _commentTableView.delegate = self;
         
         [_commentTableView registerClass:[QTCommentCell class] forCellReuseIdentifier:CellID];
-        
-        _commentTableView.contentInset = UIEdgeInsetsMake(0, 0, 45 * SCALE_6S_HEIGHT, 0);
 
         _commentTableView.rowHeight = UITableViewAutomaticDimension;
         
@@ -354,7 +352,6 @@ static NSString * const CellID = @"CellID";
         
         [self.commentCountLabel makeConstraints:^(MASConstraintMaker *make) {
             
-           
             make.width.height.offset(10);
             
             make.top.equalTo(_commentScrolltButton.top).offset(-2);
@@ -373,7 +370,14 @@ static NSString * const CellID = @"CellID";
 
 - (void)commentButtonClick:(UIButton *)button
 {
+    // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
+    
     [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
+    
+    // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (cell高度总和 + headerView 高度 - commentTableView 高度)
+
+    // 1.获取全部 cell 的高度总和
+    
 }
 
 
@@ -484,7 +488,7 @@ static NSString * const CellID = @"CellID";
         
         make.width.offset(SCREEN_WIDTH);
         
-        make.height.offset(SCREEN_HEIGHT - 64);
+        make.height.offset(SCREEN_HEIGHT - 64 - 45);
         
         make.top.equalTo(self.view);
         
@@ -496,10 +500,9 @@ static NSString * const CellID = @"CellID";
     
     [self.bottomView makeConstraints:^(MASConstraintMaker *make) {
         
-       
         make.width.offset(SCREEN_WIDTH);
         
-        make.height.offset(45 * SCALE_6S_HEIGHT);
+        make.height.offset(45);
         
         make.bottom.equalTo(self.view.bottom);
         
@@ -571,7 +574,7 @@ static NSString * const CellID = @"CellID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
