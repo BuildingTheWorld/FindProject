@@ -32,6 +32,8 @@ static NSString * const CellID = @"CellID";
 
 @property (strong, nonatomic) UIView *bottomView;
 
+@property (strong, nonatomic) UITapGestureRecognizer *singleTapGR;
+
 @end
 
 @implementation QTDetailViewController
@@ -336,6 +338,16 @@ static NSString * const CellID = @"CellID";
         make.centerX.equalTo(self.view.centerX);
     }];
     
+    self.singleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAnywhereToDismissKeyboard:)];
+    
+    
+}
+
+- (void)tapAnywhereToDismissKeyboard:(UIGestureRecognizer *)gestureRecognizer
+{
+    //此method会将self.view里所有的subview的first responder都resign掉
+
+    [self.view endEditing:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -344,37 +356,36 @@ static NSString * const CellID = @"CellID";
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         
-        
         NSDictionary *userInfoDict = note.userInfo;
-        
         
         CGFloat KBHeight = [[userInfoDict objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
-        
         [self.bottomView updateConstraints:^(MASConstraintMaker *make) {
             
             make.bottom.equalTo(self.view.bottom).offset(-KBHeight);
         }];
         
+        self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, KBHeight + 45 * SCALE_6S_HEIGHT, 0);
+        
         [self.view layoutIfNeeded];
         
-        self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, KBHeight + 45 * SCALE_6S_HEIGHT, 0);
+        [self.view addGestureRecognizer:self.singleTapGR];
         
     }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-        
         
         [self.bottomView updateConstraints:^(MASConstraintMaker *make) {
             
             make.bottom.equalTo(self.view.bottom);
         }];
         
-        [self.view layoutIfNeeded];
-        
         self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, 45 * SCALE_6S_HEIGHT, 0);
+        
+        [self.view layoutIfNeeded];
 
-
+        [self.view removeGestureRecognizer:self.singleTapGR];
+        
     }];
 }
 
