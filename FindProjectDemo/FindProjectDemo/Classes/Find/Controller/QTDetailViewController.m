@@ -14,7 +14,7 @@
 
 static NSString * const CellID = @"CellID";
 
-@interface QTDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface QTDetailViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) UIImageView *iconImageView;
 
@@ -246,6 +246,8 @@ static NSString * const CellID = @"CellID";
         
         [_commentTableView registerClass:[QTCommentCell class] forCellReuseIdentifier:CellID];
         
+        _commentTableView.contentInset = UIEdgeInsetsMake(0, 0, 45 * SCALE_6S_HEIGHT, 0);
+
         _commentTableView.rowHeight = UITableViewAutomaticDimension;
         
         _commentTableView.estimatedRowHeight = 60 * SCALE_6S_HEIGHT;
@@ -267,6 +269,8 @@ static NSString * const CellID = @"CellID";
         
         UITextField *textField = [[UITextField alloc] init];
         
+        textField.delegate = self;
+        
         textField.borderStyle = UITextBorderStyleRoundedRect;
         
         textField.backgroundColor = [UIColor colorWithHexValue:0xEBEBEB alpha:1];
@@ -274,6 +278,11 @@ static NSString * const CellID = @"CellID";
         textField.font = [UIFont systemFontOfSize:12];
         
         textField.placeholder = @"说点什么吧";
+        
+        textField.leftView           = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        
+        textField.leftViewMode       = UITextFieldViewModeAlways;
+        
         
         [_bottomView addSubview:textField];
         
@@ -298,7 +307,6 @@ static NSString * const CellID = @"CellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.commentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
     
     [self.view addSubview:self.commentTableView];
     
@@ -330,6 +338,56 @@ static NSString * const CellID = @"CellID";
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        
+        
+        NSDictionary *userInfoDict = note.userInfo;
+        
+        
+        CGFloat KBHeight = [[userInfoDict objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+        
+        [self.bottomView updateConstraints:^(MASConstraintMaker *make) {
+            
+            make.bottom.equalTo(self.view.bottom).offset(-KBHeight);
+        }];
+        
+        [self.view layoutIfNeeded];
+        
+        self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, KBHeight + 45 * SCALE_6S_HEIGHT, 0);
+        
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        
+        
+        [self.bottomView updateConstraints:^(MASConstraintMaker *make) {
+            
+            make.bottom.equalTo(self.view.bottom);
+        }];
+        
+        [self.view layoutIfNeeded];
+        
+        self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, 45 * SCALE_6S_HEIGHT, 0);
+
+
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+
 #pragma mark - commentTableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -345,6 +403,8 @@ static NSString * const CellID = @"CellID";
 }
 
 #pragma mark - commentTableView delegate
+
+#pragma mark - TextField Delegate
 
 
 
