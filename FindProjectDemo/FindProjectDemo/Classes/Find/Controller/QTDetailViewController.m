@@ -370,17 +370,20 @@ static NSString * const CellID = @"CellID";
 
 - (void)commentButtonClick:(UIButton *)button
 {
-    // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
+    // 由于使用了 self-sizing contentSize 是系统逐渐计算出来的, 所以 这里直接拿到 contentSize 有可能不准确,是一个折中方案
     
-    [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
-    
-    // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (cell高度总和 + headerView 高度 - commentTableView 高度)
+    if ((self.commentTableView.contentSize.height - self.articleViewH) > self.commentTableView.frame.size.height) // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
+    {
+        [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
+    }
+    else // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (contentSize.height - commentTableView 高度)
+    {
+        CGFloat pointY = self.commentTableView.contentSize.height - self.commentTableView.bounds.size.height;
+        
+        [self.commentTableView setContentOffset:CGPointMake(0, pointY) animated:YES];
+    }
 
-    // 1.获取全部 cell 的高度总和
-    
 }
-
-
 
 - (UILabel *)commentCountLabel
 {
@@ -397,8 +400,6 @@ static NSString * const CellID = @"CellID";
     
     return _commentCountLabel;
 }
-
-
 
 - (UIView *)bottomView
 {
@@ -574,7 +575,7 @@ static NSString * const CellID = @"CellID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
