@@ -36,9 +36,9 @@ static NSString * const CellID = @"CellID";
 
 //@property (strong, nonatomic) UILabel *likeLabel;
 
-@property (strong, nonatomic) UIButton *commentCountButton;
+@property (strong, nonatomic) UIButton *commentScrolltButton;
 
-//@property (strong, nonatomic) UILabel *commentCountLabel;
+@property (strong, nonatomic) UILabel *commentCountLabel;
 
 @property (strong, nonatomic) UIView *bottomView;
 
@@ -341,18 +341,32 @@ static NSString * const CellID = @"CellID";
 
 */
  
-- (UIButton *)commentCountButton
+- (UIButton *)commentScrolltButton
 {
-    if (_commentCountButton == nil) {
-        _commentCountButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    if (_commentScrolltButton == nil) {
+        _commentScrolltButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [_commentCountButton setImage:[UIImage imageNamed:@"commentImage"] forState:UIControlStateNormal];
+        [_commentScrolltButton setImage:[UIImage imageNamed:@"commentImage"] forState:UIControlStateNormal];
         
-        [_commentCountButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        // commentCountLabel
+        
+        [_commentScrolltButton addSubview:self.commentCountLabel];
+        
+        [self.commentCountLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+           
+            make.width.height.offset(10);
+            
+            make.top.equalTo(_commentScrolltButton.top).offset(-2);
+            make.right.equalTo(_commentScrolltButton.right).offset(2);
+            
+        }];
+        
+        [_commentScrolltButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     
-    return _commentCountButton;
+    return _commentScrolltButton;
 }
 
 #warning commentButtonClick:
@@ -362,21 +376,25 @@ static NSString * const CellID = @"CellID";
     [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
 }
 
-/*
+
 
 - (UILabel *)commentCountLabel
 {
     if (_commentCountLabel == nil) {
         _commentCountLabel = [[UILabel alloc] init];
-        _commentCountLabel.font = [UIFont systemFontOfSize:12];
-        _commentCountLabel.textColor = [UIColor colorWithHexValue:0xADADAD alpha:1];
-        _commentCountLabel.text = @"评论";
+        _commentCountLabel.backgroundColor = [UIColor redColor];
+        _commentCountLabel.textColor = [UIColor whiteColor];
+        _commentCountLabel.font = [UIFont systemFontOfSize:6];
+        _commentCountLabel.textAlignment = NSTextAlignmentCenter;
+        _commentCountLabel.text = @"7";
+        _commentCountLabel.layer.cornerRadius = 5;
+        _commentCountLabel.layer.masksToBounds = YES;
     }
     
     return _commentCountLabel;
 }
 
-*/
+
 
 - (UIView *)bottomView
 {
@@ -424,8 +442,8 @@ static NSString * const CellID = @"CellID";
         
         // commentCount button
         
-        [_bottomView addSubview:self.commentCountButton];
-        [self.commentCountButton makeConstraints:^(MASConstraintMaker *make) {
+        [_bottomView addSubview:self.commentScrolltButton];
+        [self.commentScrolltButton makeConstraints:^(MASConstraintMaker *make) {
             
             make.width.height.offset(18);
             
