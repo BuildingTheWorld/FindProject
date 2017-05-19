@@ -60,7 +60,52 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     [self.view addSubview:self.pinterestCollectionView];
+    
+    
+    
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    // 监听 TopCycleView 点击
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"TopCycleViewClick" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        
+        UITouch *currentTouch = [note.userInfo objectForKey:@"currentTouch"];
+        
+        CGPoint currentPoint = [currentTouch locationInView:self.pinterestCollectionView];
+
+        NSIndexPath *currentIndexPath = [self.pinterestCollectionView indexPathForItemAtPoint:currentPoint];
+        
+        
+        NSLog(@"%@",currentIndexPath);
+        
+        QTDetailViewController *detailVC = [[QTDetailViewController alloc] init];
+        
+        detailVC.hidesBottomBarWhenPushed = YES;
+        
+        if (self.navigationController.childViewControllers.count == 2) {
+            return;
+        }
+        
+        
+//        [self.navigationController pushViewController:detailVC animated:YES];
+        
+    }];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TopCycleViewClick" object:nil];
+}
+
 
 #pragma mark - pinterestCollectionView datasource
 
@@ -92,7 +137,6 @@
     
     [self.navigationController pushViewController:detailVC animated:YES];
 }
-
 
 
 

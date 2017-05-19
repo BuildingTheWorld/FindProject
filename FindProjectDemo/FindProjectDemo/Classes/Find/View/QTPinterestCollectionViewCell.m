@@ -47,6 +47,8 @@
     if (_topCycleView == nil) {
         
         _topCycleView = [[QTTopCycleView alloc] init];
+        
+//        _topCycleView.userInteractionEnabled = NO;
     }
     
     return _topCycleView;
@@ -203,6 +205,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        
+        
         
         
         self.contentView.backgroundColor = [UIColor whiteColor];
@@ -367,7 +371,6 @@
     
     return self;
 }
-
 
 
 

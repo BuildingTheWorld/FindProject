@@ -10,11 +10,17 @@
 
 #import "QTTopCollectionViewCell.h"
 
+#import "QTDetailViewController.h"
+
+#import "QTPinterestViewController.h"
+
+#import "QTTopCycleCollectionView.h"
+
 @interface QTTopCycleView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
 
-@property (strong, nonatomic) UICollectionView *cycleCollectionView;
+@property (strong, nonatomic) QTTopCycleCollectionView *cycleCollectionView;
 
 @property (strong, nonatomic) UIView *pageCountView;
 
@@ -44,15 +50,22 @@
 }
 
 
-- (UICollectionView *)cycleCollectionView
+- (QTTopCycleCollectionView *)cycleCollectionView
 {
     if (_cycleCollectionView == nil) {
         
-        _cycleCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
+        _cycleCollectionView = [[QTTopCycleCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
 
         _cycleCollectionView.dataSource = self;
         _cycleCollectionView.delegate = self;
         _cycleCollectionView.pagingEnabled = YES;
+        
+//        _cycleCollectionView.userInteractionEnabled = NO;
+//        _cycleCollectionView.delaysContentTouches
+//        _cycleCollectionView.canCancelContentTouches =
+//        _cycleCollectionView.allowsSelection = NO;
+//        _cycleCollectionView.multipleTouchEnabled = NO;
+//        _cycleCollectionView.clearsContextBeforeDrawing = NO;
         
         [_cycleCollectionView registerClass:[QTTopCollectionViewCell class] forCellWithReuseIdentifier:@"topCollectionViewCell"];
 
@@ -112,7 +125,12 @@
         
         [self.cycleCollectionView makeConstraints:^(MASConstraintMaker *make) {
             
-            make.edges.equalTo(self);
+//            make.edges.equalTo(self);
+            
+            make.width.offset(SCREEN_WIDTH);
+            make.height.offset(SCREEN_WIDTH);
+            make.top.equalTo(self);
+            make.centerX.equalTo(self);
             
         }];
         

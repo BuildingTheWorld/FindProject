@@ -8,6 +8,8 @@
 
 #import "QTTopCollectionViewCell.h"
 
+#import "QTPinterestCollectionViewCell.h"
+
 @interface QTTopCollectionViewCell ()
 
 @property (strong, nonatomic) UIImageView *topImageView;
@@ -22,6 +24,7 @@
 {
     if (_topImageView == nil) {
         _topImageView = [[UIImageView alloc] init];
+        
 #warning model data
         _topImageView.image = [UIImage imageNamed:@"top_image"];
     }
@@ -39,13 +42,24 @@
         
         [self.topImageView makeConstraints:^(MASConstraintMaker *make) {
            
-            
             make.edges.equalTo(self.contentView);
-            
         }];
     }
     
     return self;
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+     UITouch *currentTouch = touches.allObjects.firstObject;
+    
+    // 广播 通知 TopCycleViewClick
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:currentTouch forKey:@"currentTouch"];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TopCycleViewClick" object:nil userInfo:dict];
+    
+}
+
 
 @end
