@@ -67,7 +67,7 @@
     if (_nameLabel == nil) {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = [UIFont systemFontOfSize:14];
-        
+#warning TODO
         _nameLabel.text = @"lisa小仙女";
     }
     
@@ -80,7 +80,7 @@
         _timeLable = [[UILabel alloc] init];
         _timeLable.font = [UIFont systemFontOfSize:10];
         _timeLable.textColor = [UIColor colorWithHexValue:0x949494 alpha:1];
-        
+#warning TODO
         _timeLable.text = @"44分钟前";
     }
     
@@ -93,7 +93,7 @@
         _abstractLabel = [[UILabel alloc] init];
         
         _abstractLabel.numberOfLines = 0;
-        
+#warning TODO
         NSString *textStr = @"夏天快到了,是不是又在纠结有那个防晒了? 今天要公布的就是各款人气防晒的排名啦";
         
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:textStr];
@@ -128,7 +128,7 @@
         _likeLabel = [[UILabel alloc] init];
         _likeLabel.font = [UIFont systemFontOfSize:11];
         _likeLabel.textColor = [UIColor colorWithHexValue:0x949494 alpha:1];
-        
+#warning TODO
         _likeLabel.text = @"23";
     }
     
@@ -151,7 +151,7 @@
         _PVLabel = [[UILabel alloc] init];
         _PVLabel.font = [UIFont systemFontOfSize:11];
         _PVLabel.textColor = [UIColor colorWithHexValue:0x949494 alpha:1];
-        
+#warning TODO
         _PVLabel.text = @"33";
     }
     
@@ -174,7 +174,7 @@
         _commentLabel = [[UILabel alloc] init];
         _commentLabel.font = [UIFont systemFontOfSize:11];
         _commentLabel.textColor = [UIColor colorWithHexValue:0x949494 alpha:1];
-        
+#warning TODO
         _commentLabel.text = @"12";
     }
     

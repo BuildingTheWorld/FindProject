@@ -14,29 +14,38 @@
 
 @interface QTPinterestViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property (strong, nonatomic) UICollectionViewFlowLayout *pinterestFlowLayout;
+
 @property (strong, nonatomic) UICollectionView *pinterestCollectionView;
 
 @end
 
 @implementation QTPinterestViewController
 
-#pragma mark - 懒加载
+#pragma mark - lazy
+
+- (UICollectionViewFlowLayout *)pinterestFlowLayout
+{
+    if (_pinterestFlowLayout == nil) {
+        _pinterestFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+        
+        _pinterestFlowLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
+        
+        _pinterestFlowLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
+        
+        _pinterestFlowLayout.minimumLineSpacing = 0;
+        
+        _pinterestFlowLayout.minimumInteritemSpacing = 0;
+    }
+    
+    return _pinterestFlowLayout;
+}
 
 - (UICollectionView *)pinterestCollectionView
 {
     if (_pinterestCollectionView == nil)
     {
-        UICollectionViewFlowLayout *pinteresLayout = [[UICollectionViewFlowLayout alloc] init];
-        
-        pinteresLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
-        
-        pinteresLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
-        
-        pinteresLayout.minimumLineSpacing = 0;
-        
-        pinteresLayout.minimumInteritemSpacing = 0;
-        
-        _pinterestCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:pinteresLayout];
+        _pinterestCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.pinterestFlowLayout];
         
         _pinterestCollectionView.dataSource = self;
         

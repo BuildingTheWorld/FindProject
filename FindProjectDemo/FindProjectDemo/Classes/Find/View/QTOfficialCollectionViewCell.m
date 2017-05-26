@@ -17,43 +17,49 @@
 
 @implementation QTOfficialCollectionViewCell
 
+#pragma mark - lazy
+
+- (UIImageView *)topImageView
+{
+    if (_topImageView == nil) {
+        _topImageView = [[UIImageView alloc] init];
+#warning TODO
+        _topImageView.image = [UIImage imageNamed:@"sample"];
+    }
+    
+    return _topImageView;
+}
+
 #pragma mark - init
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame])
     {
-        UIImageView *topImageView = [[UIImageView alloc] init];
         
-        topImageView.image = [UIImage imageNamed:@"sample"];
+        [self.contentView addSubview:self.topImageView];
         
-        [self.contentView addSubview:topImageView];
+        [self.topImageView makeConstraints:^(MASConstraintMaker *make) {
+            
+            
+            make.top.equalTo(self.contentView);
+            
+            make.left.equalTo(self.contentView);
+            
+            make.right.equalTo(self.contentView);
+            
+            make.bottom.equalTo(self.contentView).offset(150 * SCALE_6S_HEIGHT).priority(100);
+            
+            make.height.offset(213 * SCALE_6S_HEIGHT);
+            
+        }];
         
-        self.topImageView = topImageView;
     }
     
     return self;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    [self.topImageView makeConstraints:^(MASConstraintMaker *make) {
 
-        make.top.equalTo(self.contentView);
-        
-        make.left.equalTo(self.contentView);
-        
-        make.right.equalTo(self.contentView);
-        
-        make.bottom.equalTo(self.contentView).offset(150 * SCALE_6S_HEIGHT).priority(100);
-        
-        make.height.offset(213 * SCALE_6S_HEIGHT);
-        
-    }];
-    
-}
 
 
 @end

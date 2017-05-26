@@ -8,15 +8,15 @@
 
 #import "QTPageContentView.h"
 
-
-NSString *CellID = @"cellid";
-
+static NSString * const CellID = @"cellid";
 
 @interface QTPageContentView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) NSArray *childVcArray;
 
 @property (weak, nonatomic) UIViewController *parentVc;
+
+@property (strong, nonatomic) UICollectionViewFlowLayout *pageFlowLayout;
 
 @property (strong, nonatomic) UICollectionView *pageCollectionView;
 
@@ -25,38 +25,27 @@ NSString *CellID = @"cellid";
 
 @implementation QTPageContentView
 
-#pragma mark - 自定义构造方法
+#pragma mark - lazy
 
-- (instancetype)initWithFrame:(CGRect)frame childVcArray:(NSArray *)childVcArray parentViewController:(UIViewController *)parentController
+- (UICollectionViewFlowLayout *)pageFlowLayout
 {
-    if (self = [super initWithFrame:frame])
-    {
-        self.childVcArray = childVcArray;
+    if (_pageFlowLayout == nil) {
+        _pageFlowLayout = [[UICollectionViewFlowLayout alloc] init];
         
-        self.parentVc = parentController;
+        _pageFlowLayout.itemSize = self.bounds.size;
+        _pageFlowLayout.minimumLineSpacing = 0;
+        _pageFlowLayout.minimumInteritemSpacing = 0;
+        _pageFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     
-    [self setUpSubViews];
-        
-    return self;
+    return _pageFlowLayout;
 }
-
-
-#pragma mark - 懒加载
 
 - (UICollectionView *)pageCollectionView
 {
     if (_pageCollectionView == nil)
     {
-        
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        
-        flowLayout.itemSize = self.bounds.size;
-        flowLayout.minimumLineSpacing = 0;
-        flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
-        _pageCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        _pageCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.pageFlowLayout];
         
         _pageCollectionView.dataSource = self;
         _pageCollectionView.delegate = self;
@@ -72,8 +61,23 @@ NSString *CellID = @"cellid";
     return _pageCollectionView;
 }
 
+#pragma mark - init
 
-#pragma mark - 添加子控件
+- (instancetype)initWithFrame:(CGRect)frame childVcArray:(NSArray *)childVcArray parentViewController:(UIViewController *)parentController
+{
+    if (self = [super initWithFrame:frame])
+    {
+        self.childVcArray = childVcArray;
+        
+        self.parentVc = parentController;
+    }
+    
+    [self setUpSubViews];
+    
+    return self;
+}
+
+#pragma mark - setUpSubViews
 
 - (void)setUpSubViews
 {

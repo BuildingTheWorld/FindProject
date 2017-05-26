@@ -7,9 +7,12 @@
 //
 
 #import "QTOfficialViewController.h"
+
 #import "QTOfficialCollectionViewCell.h"
 
 @interface QTOfficialViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) UICollectionViewFlowLayout *officialFlowLayout;
 
 @property (strong, nonatomic) UICollectionView *officialCollectionView;
 
@@ -17,24 +20,30 @@
 
 @implementation QTOfficialViewController
 
+#pragma mark - lazy
 
-#pragma mark - 懒加载
+- (UICollectionViewFlowLayout *)officialFlowLayout
+{
+    if (_officialFlowLayout == nil) {
+        _officialFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+        
+        _officialFlowLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
+        
+        _officialFlowLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
+        
+        _officialFlowLayout.minimumLineSpacing = 0;
+        
+        _officialFlowLayout.minimumInteritemSpacing = 0;
+    }
+    
+    return _officialFlowLayout;
+}
 
 - (UICollectionView *)officialCollectionView
 {
     if (_officialCollectionView == nil) {
         
-        UICollectionViewFlowLayout *officialLayout = [[UICollectionViewFlowLayout alloc] init];
-        
-        officialLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
-        
-        officialLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
-        
-        officialLayout.minimumLineSpacing = 0;
-        
-        officialLayout.minimumInteritemSpacing = 0;
-        
-        _officialCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:officialLayout];
+        _officialCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.officialFlowLayout];
         
         _officialCollectionView.dataSource = self;
         
@@ -76,13 +85,6 @@
     
     return cell;
 }
-
-
-
-#pragma mark - officialCollectionView delegate
-
-
-
 
 
 @end

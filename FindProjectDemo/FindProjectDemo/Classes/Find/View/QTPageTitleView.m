@@ -8,9 +8,7 @@
 
 #import "QTPageTitleView.h"
 
-
-CGFloat kScrollLineH = 4;
-
+static CGFloat const kScrollLineH = 4;
 
 @interface QTPageTitleView ()
 
@@ -20,7 +18,6 @@ CGFloat kScrollLineH = 4;
 
 @property (assign, nonatomic) NSInteger oldIndex;
 
-
 // 懒加载属性
 
 @property (strong, nonatomic) NSMutableArray *titleLabelArray;
@@ -29,26 +26,9 @@ CGFloat kScrollLineH = 4;
 
 @end
 
-
 @implementation QTPageTitleView
 
-#pragma mark - 自定义构造方法
-
-- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles
-{
-    if (self = [super initWithFrame:frame])
-    {
-        self.titleArray = titles;
-        
-        self.backgroundColor = [UIColor whiteColor];
-        
-        [self setUpSubViews];
-    }
-    
-    return self;
-}
-
-#pragma mark - 懒加载
+#pragma mark - lazy
 
 - (NSMutableArray *)titleLabelArray
 {
@@ -69,7 +49,23 @@ CGFloat kScrollLineH = 4;
     return _scrollLine;
 }
 
-#pragma 添加子控件
+#pragma mark - init
+
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles
+{
+    if (self = [super initWithFrame:frame])
+    {
+        self.titleArray = titles;
+        
+        self.backgroundColor = [UIColor whiteColor];
+        
+        [self setUpSubViews];
+    }
+    
+    return self;
+}
+
+#pragma mark - setUpSubViews
 
 - (void)setUpSubViews
 {
@@ -161,7 +157,7 @@ CGFloat kScrollLineH = 4;
     
 }
 
-#pragma mark - label 点击事件
+#pragma mark - SEL
 
 - (void)titleLabelClick:(UITapGestureRecognizer *)tapGes
 {

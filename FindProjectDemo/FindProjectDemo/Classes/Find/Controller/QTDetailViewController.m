@@ -298,29 +298,6 @@ static NSString * const CellID = @"CellID";
     
     return _likeButton;
 }
-
-#warning likeButtonClick:
-
-- (void)likeButtonClick:(UIButton *)button
-{
-    button.selected = !button.isSelected;
-}
-
-/*
-
-- (UILabel *)likeLabel
-{
-    if (_likeLabel == nil) {
-        _likeLabel = [[UILabel alloc] init];
-        _likeLabel.font = [UIFont systemFontOfSize:12];
-        _likeLabel.textColor = [UIColor colorWithHexValue:0xADADAD alpha:1];
-        _likeLabel.text = @"喜欢";
-    }
-    
-    return _likeLabel;
-}
-
-*/
  
 - (UIButton *)commentScrolltButton
 {
@@ -347,25 +324,6 @@ static NSString * const CellID = @"CellID";
     }
     
     return _commentScrolltButton;
-}
-
-#warning commentButtonClick:
-
-- (void)commentButtonClick:(UIButton *)button
-{
-    // 由于使用了 self-sizing contentSize 是系统逐渐计算出来的, 所以 这里直接拿到 contentSize 有可能不准确,是一个折中方案
-    
-    if ((self.commentTableView.contentSize.height - self.articleViewH) > self.commentTableView.frame.size.height) // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
-    {
-        [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
-    }
-    else // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (contentSize.height - commentTableView 高度)
-    {
-        CGFloat pointY = self.commentTableView.contentSize.height - self.commentTableView.bounds.size.height;
-        
-        [self.commentTableView setContentOffset:CGPointMake(0, pointY) animated:YES];
-    }
-
 }
 
 - (UILabel *)commentCountLabel
@@ -464,6 +422,33 @@ static NSString * const CellID = @"CellID";
     return _bottomView;
 }
 
+#pragma mark - SEL
+
+#warning likeButtonClick:
+
+- (void)likeButtonClick:(UIButton *)button
+{
+    button.selected = !button.isSelected;
+}
+
+#warning commentButtonClick:
+
+- (void)commentButtonClick:(UIButton *)button
+{
+    // 由于使用了 self-sizing contentSize 是系统逐渐计算出来的, 所以 这里直接拿到 contentSize 有可能不准确,是一个折中方案
+    
+    if ((self.commentTableView.contentSize.height - self.articleViewH) > self.commentTableView.frame.size.height) // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
+    {
+        [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
+    }
+    else // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (contentSize.height - commentTableView 高度)
+    {
+        CGFloat pointY = self.commentTableView.contentSize.height - self.commentTableView.bounds.size.height;
+        
+        [self.commentTableView setContentOffset:CGPointMake(0, pointY) animated:YES];
+    }
+    
+}
 
 #pragma mark - view life cycle
 

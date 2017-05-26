@@ -65,8 +65,8 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-                
         // icon
+        
         [self.contentView addSubview:self.iconImageView];
         
         [self.iconImageView makeConstraints:^(MASConstraintMaker *make) {
@@ -84,6 +84,7 @@
         
         
         // name
+        
         [self.contentView addSubview:self.nameLabel];
         
         [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -96,6 +97,7 @@
         
         
         // comment
+        
         [self.contentView addSubview:self.commentLabel];
         
         [self.commentLabel makeConstraints:^(MASConstraintMaker *make) {

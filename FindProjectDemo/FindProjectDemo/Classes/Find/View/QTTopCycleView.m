@@ -14,13 +14,11 @@
 
 #import "QTPinterestViewController.h"
 
-#import "QTTopCycleCollectionView.h"
-
 @interface QTTopCycleView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
 
-@property (strong, nonatomic) QTTopCycleCollectionView *cycleCollectionView;
+@property (strong, nonatomic) UICollectionView *cycleCollectionView;
 
 @property (strong, nonatomic) UIView *pageCountView;
 
@@ -49,12 +47,11 @@
     return _flowLayout;
 }
 
-
-- (QTTopCycleCollectionView *)cycleCollectionView
+- (UICollectionView *)cycleCollectionView
 {
     if (_cycleCollectionView == nil) {
         
-        _cycleCollectionView = [[QTTopCycleCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
+        _cycleCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
 
         _cycleCollectionView.dataSource = self;
         _cycleCollectionView.delegate = self;
@@ -66,7 +63,6 @@
     
     return _cycleCollectionView;
 }
-
 
 - (UIView *)pageCountView
 {
@@ -103,8 +99,6 @@
     return _pageCountLabel;
 }
 
-
-
 #pragma mark - override init
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -133,11 +127,8 @@
             
             
             make.width.offset(33);
-            
             make.height.offset(17);
-            
             make.right.equalTo(self).offset(-15);
-            
             make.bottom.equalTo(self).offset(-15);
             
         }];

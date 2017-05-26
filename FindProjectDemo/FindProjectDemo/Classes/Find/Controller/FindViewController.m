@@ -7,12 +7,14 @@
 //
 
 #import "FindViewController.h"
+
 #import "QTPageTitleView.h"
+
 #import "QTPageContentView.h"
 
 #import "QTOfficialViewController.h"
-#import "QTPinterestViewController.h"
 
+#import "QTPinterestViewController.h"
 
 @interface FindViewController ()
 
@@ -22,10 +24,9 @@
 
 @end
 
-
 @implementation FindViewController
 
-#pragma mark - 懒加载
+#pragma mark - lazy
 
 - (QTPageTitleView *)pageTitleView
 {
@@ -62,7 +63,7 @@
     return _pageContentView;
 }
 
-#pragma mark - 系统回调
+#pragma mark - view life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
