@@ -8,8 +8,6 @@
 
 #import "QTTopCollectionViewCell.h"
 
-#import "QTPinterestCollectionViewCell.h"
-
 @interface QTTopCollectionViewCell ()
 
 @property (strong, nonatomic) UIImageView *topImageView;
