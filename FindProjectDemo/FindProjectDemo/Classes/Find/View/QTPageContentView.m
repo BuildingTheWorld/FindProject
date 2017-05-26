@@ -34,14 +34,10 @@ NSString *CellID = @"cellid";
         self.childVcArray = childVcArray;
         
         self.parentVc = parentController;
-        
-//        NSLog(@"%@\n%@",self.childVcArray, self.parentVc);
     }
     
     [self setUpSubViews];
-    
-    
-    
+        
     return self;
 }
 
@@ -81,19 +77,14 @@ NSString *CellID = @"cellid";
 
 - (void)setUpSubViews
 {
-    // 1.将所有的子控制器添加父控制器中
-    
-//    for childVc in childVcs
-//    {
-//        parentViewController?.addChildViewController(childVc)
-//    }
+    // 将所有的子控制器添加父控制器中
     
     for (UIViewController *childVC in self.childVcArray)
     {
         [self.parentVc addChildViewController:childVC];
     }
     
-    // 添加collectionView
+    // 添加 collectionView
     
     [self addSubview:self.pageCollectionView];
     

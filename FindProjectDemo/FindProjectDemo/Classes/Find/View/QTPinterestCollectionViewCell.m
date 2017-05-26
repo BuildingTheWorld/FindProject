@@ -45,10 +45,7 @@
 - (QTTopCycleView *)topCycleView
 {
     if (_topCycleView == nil) {
-        
         _topCycleView = [[QTTopCycleView alloc] init];
-        
-//        _topCycleView.userInteractionEnabled = NO;
     }
     
     return _topCycleView;
@@ -97,8 +94,6 @@
         
         _abstractLabel.numberOfLines = 0;
         
-        
-        
         NSString *textStr = @"夏天快到了,是不是又在纠结有那个防晒了? 今天要公布的就是各款人气防晒的排名啦";
         
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:textStr];
@@ -112,8 +107,6 @@
         _abstractLabel.attributedText = attributedString;
         
         _abstractLabel.font = [UIFont systemFontOfSize:15];
-
-        
     }
     
     return _abstractLabel;
@@ -206,13 +199,12 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        
-        
-        
         self.contentView.backgroundColor = [UIColor whiteColor];
         
         // topCycleView
+        
         [self.contentView addSubview:self.topCycleView];
+        
         [self.topCycleView makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -227,7 +219,9 @@
         }];
         
         // icon
+        
         [self.contentView addSubview:self.iconImageView];
+        
         [self.iconImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -242,7 +236,9 @@
         }];
         
         // name
+        
         [self.contentView addSubview:self.nameLabel];
+        
         [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -253,7 +249,9 @@
         }];
         
         // time
+        
         [self.contentView addSubview:self.timeLable];
+        
         [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -264,7 +262,9 @@
         }];
         
         // abstract
+        
         [self.contentView addSubview:self.abstractLabel];
+        
         [self.abstractLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -278,7 +278,9 @@
         }];
         
         // likeImageView
+        
         [self.contentView addSubview:self.likeImageView];
+        
         [self.likeImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -295,7 +297,9 @@
         }];
         
         // likeLabel
+        
         [self.contentView addSubview:self.likeLabel];
+        
         [self.likeLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -306,7 +310,9 @@
         }];
         
         // PVImageView
+        
         [self.contentView addSubview:self.PVImageView];
+        
         [self.PVImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -321,7 +327,9 @@
         }];
         
         // PVLabel
+        
         [self.contentView addSubview:self.PVLabel];
+        
         [self.PVLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -332,7 +340,9 @@
         }];
         
         // commentImageView
+        
         [self.contentView addSubview:self.commentImageView];
+        
         [self.commentImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -347,7 +357,9 @@
         }];
         
         // commentLabel
+        
         [self.contentView addSubview:self.commentLabel];
+        
         [self.commentLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -357,7 +369,9 @@
         }];
         
         // moreLabel
+        
         [self.contentView addSubview:self.moreLabel];
+        
         [self.moreLabel makeConstraints:^(MASConstraintMaker *make) {
             
             

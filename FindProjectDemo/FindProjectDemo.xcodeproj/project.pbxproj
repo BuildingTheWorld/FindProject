@@ -141,9 +141,9 @@
 		081407131EBC8A6D009AD987 /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				081407141EBC8A6D009AD987 /* Controller */,
 				0814071D1EBC8A6D009AD987 /* Model */,
 				0814071E1EBC8A6D009AD987 /* View */,
+				081407141EBC8A6D009AD987 /* Controller */,
 			);
 			path = Find;
 			sourceTree = "<group>";

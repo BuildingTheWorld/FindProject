@@ -94,6 +94,7 @@ CGFloat kScrollLineH = 4;
         label.tag = i;
         
         CGFloat labelX = labelW * i;
+        
         label.frame = CGRectMake(labelX, labelY, labelW, labelH);
         
         label.font = [UIFont systemFontOfSize:13];

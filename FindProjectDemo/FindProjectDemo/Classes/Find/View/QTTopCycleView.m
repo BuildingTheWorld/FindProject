@@ -60,13 +60,6 @@
         _cycleCollectionView.delegate = self;
         _cycleCollectionView.pagingEnabled = YES;
         
-//        _cycleCollectionView.userInteractionEnabled = NO;
-//        _cycleCollectionView.delaysContentTouches
-//        _cycleCollectionView.canCancelContentTouches =
-//        _cycleCollectionView.allowsSelection = NO;
-//        _cycleCollectionView.multipleTouchEnabled = NO;
-//        _cycleCollectionView.clearsContextBeforeDrawing = NO;
-        
         [_cycleCollectionView registerClass:[QTTopCollectionViewCell class] forCellWithReuseIdentifier:@"topCollectionViewCell"];
 
     }
@@ -124,8 +117,6 @@
         [self addSubview:self.cycleCollectionView];
         
         [self.cycleCollectionView makeConstraints:^(MASConstraintMaker *make) {
-            
-//            make.edges.equalTo(self);
             
             make.width.offset(SCREEN_WIDTH);
             make.height.offset(SCREEN_WIDTH);

@@ -34,8 +34,6 @@ static NSString * const CellID = @"CellID";
 
 @property (strong, nonatomic) UIButton *likeButton;
 
-//@property (strong, nonatomic) UILabel *likeLabel;
-
 @property (strong, nonatomic) UIButton *commentScrolltButton;
 
 @property (strong, nonatomic) UILabel *commentCountLabel;
@@ -107,24 +105,12 @@ static NSString * const CellID = @"CellID";
         
         paragraphStyle.alignment = NSTextAlignmentJustified;
         
-//        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributedString.length)];
-        
-//        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, attributedString.length)];
-        
         NSDictionary *attributesDict = @{NSFontAttributeName : [UIFont systemFontOfSize:13],
                                NSParagraphStyleAttributeName : paragraphStyle};
         
         [attributedString addAttributes:attributesDict range:NSMakeRange(0, attributedString.length)];
         
         _articleLabel.attributedText = attributedString;
-        
-//        NSLog(@"%f",[_articleLabel.attributedText boundingRectWithSize:CGSizeMake(328 * SCALE_6S_WIDTH, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingUsesDeviceMetrics context:nil].size.height);
-        
-//        [_articleLabel.attributedText boundingRectWithSize:CGSizeMake(328 * SCALE_6S_WIDTH, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingUsesDeviceMetrics context:nil];
-        
-//        [_articleLabel.text boundingRectWithSize:CGSizeMake(328 * SCALE_6S_WIDTH, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingUsesDeviceMetrics attributes:attributesDict context:nil].size.height;
-        
-//        NSLog(@"%f",[_articleLabel.text boundingRectWithSize:CGSizeMake(328 * SCALE_6S_WIDTH, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingUsesDeviceMetrics attributes:attributesDict context:nil].size.height);
         
     }
     
@@ -240,8 +226,6 @@ static NSString * const CellID = @"CellID";
         
         // 375 + 23 + 40 + 27 + height
         
-//        NSLog(@"%f",ceil(articleLabelH));
-        
         CGFloat articleViewH = SCALE_6S_HEIGHT * (375 + 23 + 40 + 27 + 20) + ceil(articleLabelH);
         
         self.articleViewH = articleViewH;
@@ -269,7 +253,6 @@ static NSString * const CellID = @"CellID";
         _commentTableView.tableHeaderView = self.articleView;
         
         _commentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
     }
     
     return _commentTableView;
@@ -410,6 +393,7 @@ static NSString * const CellID = @"CellID";
         // comment TextField
         
         [_bottomView addSubview:self.commentTextField];
+        
         [self.commentTextField makeConstraints:^(MASConstraintMaker *make) {
             
             
@@ -423,6 +407,7 @@ static NSString * const CellID = @"CellID";
         // like button
         
         [_bottomView addSubview:self.likeButton];
+        
         [self.likeButton makeConstraints:^(MASConstraintMaker *make) {
             
             make.width.offset(18);
@@ -432,6 +417,7 @@ static NSString * const CellID = @"CellID";
         }];
         
         // like label
+        
         /*
         
         [_bottomView addSubview:self.likeLabel];
@@ -448,6 +434,7 @@ static NSString * const CellID = @"CellID";
         // commentCount button
         
         [_bottomView addSubview:self.commentScrolltButton];
+        
         [self.commentScrolltButton makeConstraints:^(MASConstraintMaker *make) {
             
             make.width.height.offset(18);
@@ -458,6 +445,7 @@ static NSString * const CellID = @"CellID";
         }];
         
         // commentCount label
+        
         /*
         
         [_bottomView addSubview:self.commentCountLabel];
@@ -605,9 +593,7 @@ static NSString * const CellID = @"CellID";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
 #warning 发送评论网络请求
-    
     
     [self.view endEditing:YES];
     

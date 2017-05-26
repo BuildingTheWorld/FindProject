@@ -28,8 +28,6 @@
     {
         UICollectionViewFlowLayout *pinteresLayout = [[UICollectionViewFlowLayout alloc] init];
         
-//        pinteresLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
-        
         pinteresLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 625 * SCALE_6S_HEIGHT);
         
         pinteresLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
@@ -43,8 +41,6 @@
         _pinterestCollectionView.dataSource = self;
         
         _pinterestCollectionView.delegate = self;
-        
-//        [_pinterestCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"pinterestCollectionViewCell"];
         
         [_pinterestCollectionView registerClass:[QTPinterestCollectionViewCell class] forCellWithReuseIdentifier:@"pinterestCollectionViewCell"];
     }
@@ -60,9 +56,6 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     [self.view addSubview:self.pinterestCollectionView];
-    
-    
-    
     
 }
 
@@ -84,16 +77,20 @@
         
         NSLog(@"%@",currentIndexPath);
         
+        // 根据 indexPath 从模型数组中取出 对应行的模型
+        
         QTDetailViewController *detailVC = [[QTDetailViewController alloc] init];
+        
+        // 在 detailVC 定义一个属性, 用来接收 对应的模型
         
         detailVC.hidesBottomBarWhenPushed = YES;
         
-        if (self.navigationController.childViewControllers.count == 2) {
+        if (self.navigationController.childViewControllers.count == 2)
+        {
             return;
         }
         
-        
-//        [self.navigationController pushViewController:detailVC animated:YES];
+        [self.navigationController pushViewController:detailVC animated:YES];
         
     }];
 }

@@ -26,8 +26,6 @@
         
         UICollectionViewFlowLayout *officialLayout = [[UICollectionViewFlowLayout alloc] init];
         
-//        officialLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
-        
         officialLayout.estimatedItemSize = CGSizeMake(SCREEN_WIDTH, 333 * SCALE_6S_HEIGHT);
         
         officialLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
@@ -41,12 +39,6 @@
         _officialCollectionView.dataSource = self;
         
         _officialCollectionView.delegate = self;
-        
-        
-        
-//        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-//        [_officialCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([QTOfficialCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:@"officialCollectionViewCell"];
         
         [_officialCollectionView registerClass:[QTOfficialCollectionViewCell class] forCellWithReuseIdentifier:@"officialCollectionViewCell"];
     }
