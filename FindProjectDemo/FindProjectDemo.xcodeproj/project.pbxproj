@@ -111,11 +111,11 @@
 				081407121EBC8A6D009AD987 /* Classes */,
 				081406EE1EBC5C23009AD987 /* AppDelegate.h */,
 				081406EF1EBC5C23009AD987 /* AppDelegate.m */,
+				081407051EBC6090009AD987 /* PrefixHeader.pch */,
 				081406F41EBC5C23009AD987 /* Main.storyboard */,
 				081406F71EBC5C23009AD987 /* Assets.xcassets */,
 				081406F91EBC5C23009AD987 /* LaunchScreen.storyboard */,
 				081406FC1EBC5C23009AD987 /* Info.plist */,
-				081407051EBC6090009AD987 /* PrefixHeader.pch */,
 				081406EB1EBC5C23009AD987 /* Supporting Files */,
 			);
 			path = FindProjectDemo;

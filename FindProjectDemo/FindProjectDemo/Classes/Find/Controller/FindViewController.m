@@ -44,11 +44,13 @@
     if (_pageContentView == nil)
     {
         
-        QTOfficialViewController *officialVc = [[QTOfficialViewController alloc] init];
+//        QTOfficialViewController *officialVc = [[QTOfficialViewController alloc] init];
         
-        QTPinterestViewController *pinterestVc = [[QTPinterestViewController alloc] init];
+        QTPinterestViewController *pinterestVc1 = [[QTPinterestViewController alloc] init];
         
-        NSArray *childVcArray = [NSArray arrayWithObjects:officialVc, pinterestVc, nil];
+        QTPinterestViewController *pinterestVc2 = [[QTPinterestViewController alloc] init];
+
+        NSArray *childVcArray = [NSArray arrayWithObjects:pinterestVc1, pinterestVc2, nil];
         
         _pageContentView = [[QTPageContentView alloc] initWithFrame:CGRectMake(0, 34 * SCALE_6S_HEIGHT, SCREEN_WIDTH, self.view.bounds.size.height) childVcArray:childVcArray parentViewController:self];
         
