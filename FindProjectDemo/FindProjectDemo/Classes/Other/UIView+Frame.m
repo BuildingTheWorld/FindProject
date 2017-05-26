@@ -1,10 +1,3 @@
-//
-//  UIView+Frame.m
-//  QT
-//
-//  Created by qt on 16/4/25.
-//  Copyright © 2016年 qt. All rights reserved.
-//
 
 #import "UIView+Frame.h"
 

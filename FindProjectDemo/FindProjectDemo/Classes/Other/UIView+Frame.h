@@ -1,12 +1,3 @@
-//
-//  UIView+Frame.h
-//  QT
-//
-//  Created by qt on 16/4/25.
-//  Copyright © 2016年 qt. All rights reserved.
-//
-
-
 
 // 避免冲突，加前缀
 
