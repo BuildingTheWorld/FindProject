@@ -72,10 +72,13 @@
     
 //    self.view.autoresizingMask = NO;
     
-    [self setUpSubViews];
-    
     [self setUpNavigationBar];
     
+    [self setUpSubViews];
+ 
+    // loadData
+    
+    [self loadData];
 }
 
 #pragma mark - setUpNavigationBar
@@ -105,5 +108,14 @@
     
 }
 
+#pragma mark - network
+
+- (void)loadData
+{
+    
+#warning TODO
+    
+    // 请求成功后, 分别把数据传递给 pinterestVc1 和 pinterestVc2 中 modelArray
+}
 
 @end

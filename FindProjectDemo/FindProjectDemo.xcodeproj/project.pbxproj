@@ -221,10 +221,10 @@
 		086019B41ED8183700DDF1D1 /* FindMain */ = {
 			isa = PBXGroup;
 			children = (
-				086019B51ED8183700DDF1D1 /* QTPageContentView.h */,
-				086019B61ED8183700DDF1D1 /* QTPageContentView.m */,
 				086019B71ED8183700DDF1D1 /* QTPageTitleView.h */,
 				086019B81ED8183700DDF1D1 /* QTPageTitleView.m */,
+				086019B51ED8183700DDF1D1 /* QTPageContentView.h */,
+				086019B61ED8183700DDF1D1 /* QTPageContentView.m */,
 			);
 			path = FindMain;
 			sourceTree = "<group>";

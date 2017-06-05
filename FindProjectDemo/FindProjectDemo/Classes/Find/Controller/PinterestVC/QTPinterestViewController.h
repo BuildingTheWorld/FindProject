@@ -10,4 +10,6 @@
 
 @interface QTPinterestViewController : UIViewController
 
+@property (strong, nonatomic) NSArray *modelArray;
+
 @end

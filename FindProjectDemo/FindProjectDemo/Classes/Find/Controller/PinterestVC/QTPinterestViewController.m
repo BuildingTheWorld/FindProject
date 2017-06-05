@@ -51,6 +51,8 @@
         
         _pinterestCollectionView.delegate = self;
         
+        _pinterestCollectionView.backgroundColor = [UIColor whiteColor];
+        
         [_pinterestCollectionView registerClass:[QTPinterestCollectionViewCell class] forCellWithReuseIdentifier:@"pinterestCollectionViewCell"];
     }
     
@@ -77,14 +79,17 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"TopCycleViewClick" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         
+        
+        if (self.navigationController.childViewControllers.count == 2)
+        {
+            return;
+        }
+        
         UITouch *currentTouch = [note.userInfo objectForKey:@"currentTouch"];
         
         CGPoint currentPoint = [currentTouch locationInView:self.pinterestCollectionView];
 
         NSIndexPath *currentIndexPath = [self.pinterestCollectionView indexPathForItemAtPoint:currentPoint];
-        
-        
-        NSLog(@"%@",currentIndexPath);
         
         // 根据 indexPath 从模型数组中取出 对应行的模型
         
@@ -94,10 +99,7 @@
         
         detailVC.hidesBottomBarWhenPushed = YES;
         
-        if (self.navigationController.childViewControllers.count == 2)
-        {
-            return;
-        }
+        NSLog(@"%@",currentIndexPath);
         
         [self.navigationController pushViewController:detailVC animated:YES];
         
@@ -118,6 +120,8 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return 50;
+    
+//    return self.modelArray.count;
 }
 
 
@@ -125,10 +129,7 @@
 {
     QTPinterestCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pinterestCollectionViewCell" forIndexPath:indexPath];
     
-//    cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0
-//                                                       green:arc4random_uniform(255) / 255.0
-//                                                        blue:arc4random_uniform(255) / 255.0
-//                                                       alpha:1];
+    
     
     return cell;
 }

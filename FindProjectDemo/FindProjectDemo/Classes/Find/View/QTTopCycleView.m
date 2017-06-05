@@ -56,6 +56,7 @@
         _cycleCollectionView.dataSource = self;
         _cycleCollectionView.delegate = self;
         _cycleCollectionView.pagingEnabled = YES;
+        _cycleCollectionView.bounces = NO;
         
         [_cycleCollectionView registerClass:[QTTopCollectionViewCell class] forCellWithReuseIdentifier:@"topCollectionViewCell"];
 
