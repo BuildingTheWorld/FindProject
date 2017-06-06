@@ -225,7 +225,7 @@
         [self.iconImageView makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.top.equalTo(self.topCycleView.bottom).offset(24 * SCALE_6S_HEIGHT);
+            make.top.equalTo(self.topCycleView.mas_bottom).offset(24 * SCALE_6S_HEIGHT);
             
             make.left.equalTo(self.contentView).offset(24 * SCALE_6S_WIDTH);
             
@@ -242,7 +242,7 @@
         [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.left.equalTo(self.iconImageView.right).offset(6);
+            make.left.equalTo(self.iconImageView.mas_right).offset(6);
             
             make.top.equalTo(self.iconImageView);
             
@@ -255,7 +255,7 @@
         [self.timeLable makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.left.equalTo(self.iconImageView.right).offset(6);
+            make.left.equalTo(self.iconImageView.mas_right).offset(6);
             
             make.bottom.equalTo(self.iconImageView);
             
@@ -270,11 +270,11 @@
             
             make.width.equalTo(325 * SCALE_6S_WIDTH);
             
-            make.top.equalTo(self.iconImageView.bottom).offset(24);
+            make.top.equalTo(self.iconImageView.mas_bottom).offset(24);
             
             make.centerX.equalTo(self.contentView);
             
-            //        make.bottom.equalTo(self.contentView).offset(-120);
+            
         }];
         
         // likeImageView
@@ -288,7 +288,7 @@
             
             make.height.offset(11);
             
-            make.top.equalTo(self.abstractLabel.bottom).offset(40);
+            make.top.equalTo(self.abstractLabel.mas_bottom).offset(40);
             
             make.left.equalTo(self.contentView).offset(22);
             
@@ -303,9 +303,9 @@
         [self.likeLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.left.equalTo(self.likeImageView.right).offset(4);
+            make.left.equalTo(self.likeImageView.mas_right).offset(4);
             
-            make.centerY.equalTo(self.likeImageView.centerY);
+            make.centerY.equalTo(self.likeImageView);
             
         }];
         
@@ -320,9 +320,9 @@
             
             make.height.offset(11);
             
-            make.left.equalTo(self.likeLabel.right).offset(4);
+            make.left.equalTo(self.likeLabel.mas_right).offset(4);
             
-            make.centerY.equalTo(self.likeImageView.centerY);
+            make.centerY.equalTo(self.likeImageView);
             
         }];
         
@@ -333,9 +333,9 @@
         [self.PVLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.left.equalTo(self.PVImageView.right).offset(4);
+            make.left.equalTo(self.PVImageView.mas_right).offset(4);
             
-            make.centerY.equalTo(self.likeImageView.centerY);
+            make.centerY.equalTo(self.likeImageView);
             
         }];
         
@@ -350,9 +350,9 @@
             
             make.height.offset(13);
             
-            make.left.equalTo(self.PVLabel.right).offset(4);
+            make.left.equalTo(self.PVLabel.mas_right).offset(4);
             
-            make.centerY.equalTo(self.likeImageView.centerY);
+            make.centerY.equalTo(self.likeImageView);
             
         }];
         
@@ -363,9 +363,9 @@
         [self.commentLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.left.equalTo(self.commentImageView.right).offset(4);
+            make.left.equalTo(self.commentImageView.mas_right).offset(4);
             
-            make.centerY.equalTo(self.likeImageView.centerY);
+            make.centerY.equalTo(self.likeImageView);
         }];
         
         // moreLabel
@@ -375,9 +375,11 @@
         [self.moreLabel makeConstraints:^(MASConstraintMaker *make) {
             
             
-            make.centerY.equalTo(self.likeImageView.centerY);
+            make.centerY.equalTo(self.likeImageView);
             
             make.right.equalTo(self.contentView).offset(-22);
+            
+//            make.right.equalTo(-22);
             
         }];
         

@@ -90,9 +90,9 @@
         [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
             
            
-            make.top.equalTo(self.iconImageView.top);
+            make.top.equalTo(self.iconImageView);
             
-            make.left.equalTo(self.iconImageView.right).offset(6 * SCALE_6S_WIDTH);
+            make.left.equalTo(self.iconImageView.mas_right).offset(6 * SCALE_6S_WIDTH);
         }];
         
         
@@ -102,14 +102,14 @@
         
         [self.commentLabel makeConstraints:^(MASConstraintMaker *make) {
             
+            make.top.equalTo(self.nameLabel.mas_bottom).offset(4);
            
-            make.left.equalTo(self.nameLabel.left);
+            make.left.equalTo(self.nameLabel);
             
-            make.right.equalTo(self.contentView.right).offset(-22 * SCALE_6S_WIDTH);
+            make.bottom.equalTo(self.contentView).offset(-15);
             
-            make.top.equalTo(self.nameLabel.bottom).offset(4);
+            make.right.equalTo(self.contentView).offset(-22 * SCALE_6S_WIDTH);
             
-            make.bottom.equalTo(self.contentView.bottom).offset(-15);
         }];
         
     }

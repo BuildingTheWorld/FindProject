@@ -129,7 +129,6 @@
 		081407121EBC8A6D009AD987 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				086019B41ED8183700DDF1D1 /* FindMain */,
 				081407131EBC8A6D009AD987 /* Find */,
 				0814071F1EBC8A6D009AD987 /* Other */,
 			);
@@ -168,12 +167,13 @@
 		0814071E1EBC8A6D009AD987 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				086019BB1ED8186D00DDF1D1 /* Outside */,
-				086019C21ED8189E00DDF1D1 /* Inside */,
+				086019B41ED8183700DDF1D1 /* FindMain */,
 				08214DAF1EC478FB00D0D0BC /* QTTopCycleView.h */,
 				08214DB01EC478FB00D0D0BC /* QTTopCycleView.m */,
 				08214DB21EC55CA000D0D0BC /* QTTopCollectionViewCell.h */,
 				08214DB31EC55CA000D0D0BC /* QTTopCollectionViewCell.m */,
+				086019BB1ED8186D00DDF1D1 /* Outside */,
+				086019C21ED8189E00DDF1D1 /* Inside */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,7 +226,8 @@
 				086019B51ED8183700DDF1D1 /* QTPageContentView.h */,
 				086019B61ED8183700DDF1D1 /* QTPageContentView.m */,
 			);
-			path = FindMain;
+			name = FindMain;
+			path = ../../FindMain;
 			sourceTree = "<group>";
 		};
 		086019BB1ED8186D00DDF1D1 /* Outside */ = {
@@ -364,7 +365,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EF3318B9D47DE4211CE7330D /* [CP] Copy Pods Resources */ = {

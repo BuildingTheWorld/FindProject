@@ -79,7 +79,7 @@
         
         [self.pageCountLabel makeConstraints:^(MASConstraintMaker *make) {
            
-            make.center.equalTo(self.pageCountView.center);
+            make.center.equalTo(self.pageCountView);
             
         }];
     }

@@ -144,9 +144,9 @@ static NSString * const CellID = @"CellID";
             
             make.width.height.offset(SCREEN_WIDTH);
             
-            make.top.equalTo(_articleView.top);
+            make.top.equalTo(_articleView);
             
-            make.left.equalTo(_articleView.left);
+            make.left.equalTo(_articleView);
             
         }];
         
@@ -158,9 +158,9 @@ static NSString * const CellID = @"CellID";
             
             make.width.height.offset(40);
             
-            make.top.equalTo(topCycleView.bottom).offset(23 * SCALE_6S_HEIGHT);
+            make.top.equalTo(topCycleView.mas_bottom).offset(23 * SCALE_6S_HEIGHT);
             
-            make.left.equalTo(_articleView.left).offset(23 * SCALE_6S_WIDTH);
+            make.left.equalTo(_articleView).offset(23 * SCALE_6S_WIDTH);
         }];
         
         // nameLabel
@@ -170,9 +170,9 @@ static NSString * const CellID = @"CellID";
         [self.nameLabel makeConstraints:^(MASConstraintMaker *make) {
             
            
-            make.top.equalTo(self.iconImageView.top);
+            make.top.equalTo(self.iconImageView);
             
-            make.left.equalTo(self.iconImageView.right).offset(6);
+            make.left.equalTo(self.iconImageView.mas_right).offset(6);
             
         }];
         
@@ -183,9 +183,9 @@ static NSString * const CellID = @"CellID";
         [self.timeLabel makeConstraints:^(MASConstraintMaker *make) {
             
            
-            make.left.equalTo(self.nameLabel.left);
+            make.left.equalTo(self.nameLabel);
             
-            make.bottom.equalTo(self.iconImageView.bottom);
+            make.bottom.equalTo(self.iconImageView);
             
         }];
         
@@ -198,9 +198,9 @@ static NSString * const CellID = @"CellID";
            
             make.width.offset(328 * SCALE_6S_WIDTH);
             
-            make.centerX.equalTo(_articleView.centerX);
+            make.centerX.equalTo(_articleView);
             
-            make.top.equalTo(self.iconImageView.bottom).offset(24);
+            make.top.equalTo(self.iconImageView.mas_bottom).offset(24);
         }];
         
         // 计算 articleLabel 高度
@@ -218,9 +218,9 @@ static NSString * const CellID = @"CellID";
             
             make.height.offset(1);
             
-            make.bottom.equalTo(_articleView.bottom);
+            make.bottom.equalTo(_articleView);
             
-            make.centerX.equalTo(_articleView.centerX);
+            make.centerX.equalTo(_articleView);
             
         }];
         
@@ -314,8 +314,9 @@ static NSString * const CellID = @"CellID";
             
             make.width.height.offset(10);
             
-            make.top.equalTo(_commentScrolltButton.top).offset(-2);
-            make.right.equalTo(_commentScrolltButton.right).offset(2);
+            make.top.equalTo(_commentScrolltButton).offset(-2);
+            
+            make.right.equalTo(_commentScrolltButton).offset(2);
             
         }];
         
@@ -357,9 +358,9 @@ static NSString * const CellID = @"CellID";
             
             make.width.offset(264 * SCALE_6S_WIDTH);
             
-            make.left.equalTo(_bottomView.left).offset(12 * SCALE_6S_WIDTH);
+            make.left.equalTo(_bottomView).offset(12 * SCALE_6S_WIDTH);
             
-            make.centerY.equalTo(_bottomView.centerY);
+            make.centerY.equalTo(_bottomView);
         }];
         
         // like button
@@ -370,8 +371,8 @@ static NSString * const CellID = @"CellID";
             
             make.width.offset(18);
             make.height.offset(16);
-            make.centerY.equalTo(_bottomView.centerY);
-            make.left.equalTo(self.commentTextField.right).offset(22 * SCALE_6S_WIDTH);
+            make.centerY.equalTo(_bottomView);
+            make.left.equalTo(self.commentTextField.mas_right).offset(22 * SCALE_6S_WIDTH);
         }];
         
         // like label
@@ -397,9 +398,9 @@ static NSString * const CellID = @"CellID";
             
             make.width.height.offset(18);
             
-            make.centerY.equalTo(_bottomView.centerY);
+            make.centerY.equalTo(_bottomView);
             
-            make.left.equalTo(self.likeButton.right).offset(22 * SCALE_6S_WIDTH);
+            make.left.equalTo(self.likeButton.mas_right).offset(22 * SCALE_6S_WIDTH);
         }];
         
         // commentCount label
@@ -478,9 +479,9 @@ static NSString * const CellID = @"CellID";
         
         make.height.offset(45);
         
-        make.bottom.equalTo(self.view.bottom);
+        make.bottom.equalTo(self.view);
         
-        make.centerX.equalTo(self.view.centerX);
+        make.centerX.equalTo(self.view);
     }];
     
     self.singleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAnywhereToDismissKeyboard:)];
@@ -507,7 +508,7 @@ static NSString * const CellID = @"CellID";
     
         [self.bottomView updateConstraints:^(MASConstraintMaker *make) {
             
-            make.bottom.equalTo(self.view.bottom).offset(-KBHeight);
+            make.bottom.equalTo(self.view).offset(-KBHeight);
         }];
         
         self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, KBHeight + 45 * SCALE_6S_HEIGHT, 0);
@@ -522,7 +523,7 @@ static NSString * const CellID = @"CellID";
         
         [self.bottomView updateConstraints:^(MASConstraintMaker *make) {
             
-            make.bottom.equalTo(self.view.bottom);
+            make.bottom.equalTo(self.view);
         }];
         
         self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, 45 * SCALE_6S_HEIGHT, 0);

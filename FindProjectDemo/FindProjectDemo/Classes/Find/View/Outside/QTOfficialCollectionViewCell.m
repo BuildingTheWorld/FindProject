@@ -48,7 +48,7 @@
             
             make.right.equalTo(self.contentView);
             
-            make.bottom.equalTo(self.contentView).offset(150 * SCALE_6S_HEIGHT).priority(100);
+            make.bottom.equalTo(self.contentView).offset(-150 * SCALE_6S_HEIGHT).priority(100);
             
             make.height.offset(213 * SCALE_6S_HEIGHT);
             
