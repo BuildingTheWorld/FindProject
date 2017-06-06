@@ -21,11 +21,11 @@
 		086019B11ED8164400DDF1D1 /* QTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019AA1ED8164400DDF1D1 /* QTDetailViewController.m */; };
 		086019B21ED8164400DDF1D1 /* QTOfficialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019AD1ED8164400DDF1D1 /* QTOfficialViewController.m */; };
 		086019B31ED8164400DDF1D1 /* QTPinterestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019B01ED8164400DDF1D1 /* QTPinterestViewController.m */; };
-		086019B91ED8183700DDF1D1 /* QTPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019B61ED8183700DDF1D1 /* QTPageContentView.m */; };
-		086019BA1ED8183700DDF1D1 /* QTPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019B81ED8183700DDF1D1 /* QTPageTitleView.m */; };
 		086019C01ED8186D00DDF1D1 /* QTOfficialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019BD1ED8186D00DDF1D1 /* QTOfficialCollectionViewCell.m */; };
 		086019C11ED8186D00DDF1D1 /* QTPinterestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019BF1ED8186D00DDF1D1 /* QTPinterestCollectionViewCell.m */; };
 		086019C51ED8189E00DDF1D1 /* QTCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 086019C41ED8189E00DDF1D1 /* QTCommentCell.m */; };
+		08C582F81EE6ACE200611FBC /* QTPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C582F51EE6ACE200611FBC /* QTPageContentView.m */; };
+		08C582F91EE6ACE200611FBC /* QTPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C582F71EE6ACE200611FBC /* QTPageTitleView.m */; };
 		4F5575161C8F4C7077B55B9D /* libPods-FindProjectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094A6296B43289D44A3098D8 /* libPods-FindProjectDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -57,16 +57,16 @@
 		086019AD1ED8164400DDF1D1 /* QTOfficialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTOfficialViewController.m; sourceTree = "<group>"; };
 		086019AF1ED8164400DDF1D1 /* QTPinterestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPinterestViewController.h; sourceTree = "<group>"; };
 		086019B01ED8164400DDF1D1 /* QTPinterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPinterestViewController.m; sourceTree = "<group>"; };
-		086019B51ED8183700DDF1D1 /* QTPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPageContentView.h; sourceTree = "<group>"; };
-		086019B61ED8183700DDF1D1 /* QTPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPageContentView.m; sourceTree = "<group>"; };
-		086019B71ED8183700DDF1D1 /* QTPageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPageTitleView.h; sourceTree = "<group>"; };
-		086019B81ED8183700DDF1D1 /* QTPageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPageTitleView.m; sourceTree = "<group>"; };
 		086019BC1ED8186D00DDF1D1 /* QTOfficialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTOfficialCollectionViewCell.h; sourceTree = "<group>"; };
 		086019BD1ED8186D00DDF1D1 /* QTOfficialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTOfficialCollectionViewCell.m; sourceTree = "<group>"; };
 		086019BE1ED8186D00DDF1D1 /* QTPinterestCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPinterestCollectionViewCell.h; sourceTree = "<group>"; };
 		086019BF1ED8186D00DDF1D1 /* QTPinterestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPinterestCollectionViewCell.m; sourceTree = "<group>"; };
 		086019C31ED8189E00DDF1D1 /* QTCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTCommentCell.h; sourceTree = "<group>"; };
 		086019C41ED8189E00DDF1D1 /* QTCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTCommentCell.m; sourceTree = "<group>"; };
+		08C582F41EE6ACE200611FBC /* QTPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPageContentView.h; sourceTree = "<group>"; };
+		08C582F51EE6ACE200611FBC /* QTPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPageContentView.m; sourceTree = "<group>"; };
+		08C582F61EE6ACE200611FBC /* QTPageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPageTitleView.h; sourceTree = "<group>"; };
+		08C582F71EE6ACE200611FBC /* QTPageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPageTitleView.m; sourceTree = "<group>"; };
 		094A6296B43289D44A3098D8 /* libPods-FindProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99ACE6E93F8B31054ABA1F36 /* Pods-FindProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindProjectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindProjectDemo/Pods-FindProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C4930563DA501FE4D0D18E28 /* Pods-FindProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindProjectDemo/Pods-FindProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		0814071E1EBC8A6D009AD987 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				086019B41ED8183700DDF1D1 /* FindMain */,
+				08C582F31EE6ACE200611FBC /* FindMain */,
 				08214DAF1EC478FB00D0D0BC /* QTTopCycleView.h */,
 				08214DB01EC478FB00D0D0BC /* QTTopCycleView.m */,
 				08214DB21EC55CA000D0D0BC /* QTTopCollectionViewCell.h */,
@@ -218,18 +218,6 @@
 			path = PinterestVC;
 			sourceTree = "<group>";
 		};
-		086019B41ED8183700DDF1D1 /* FindMain */ = {
-			isa = PBXGroup;
-			children = (
-				086019B71ED8183700DDF1D1 /* QTPageTitleView.h */,
-				086019B81ED8183700DDF1D1 /* QTPageTitleView.m */,
-				086019B51ED8183700DDF1D1 /* QTPageContentView.h */,
-				086019B61ED8183700DDF1D1 /* QTPageContentView.m */,
-			);
-			name = FindMain;
-			path = ../../FindMain;
-			sourceTree = "<group>";
-		};
 		086019BB1ED8186D00DDF1D1 /* Outside */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +236,17 @@
 				086019C41ED8189E00DDF1D1 /* QTCommentCell.m */,
 			);
 			path = Inside;
+			sourceTree = "<group>";
+		};
+		08C582F31EE6ACE200611FBC /* FindMain */ = {
+			isa = PBXGroup;
+			children = (
+				08C582F41EE6ACE200611FBC /* QTPageContentView.h */,
+				08C582F51EE6ACE200611FBC /* QTPageContentView.m */,
+				08C582F61EE6ACE200611FBC /* QTPageTitleView.h */,
+				08C582F71EE6ACE200611FBC /* QTPageTitleView.m */,
+			);
+			path = FindMain;
 			sourceTree = "<group>";
 		};
 		15A42596E3F46F7260EA3701 /* Pods */ = {
@@ -395,13 +394,13 @@
 				086019C51ED8189E00DDF1D1 /* QTCommentCell.m in Sources */,
 				086019B11ED8164400DDF1D1 /* QTDetailViewController.m in Sources */,
 				086019C11ED8186D00DDF1D1 /* QTPinterestCollectionViewCell.m in Sources */,
+				08C582F81EE6ACE200611FBC /* QTPageContentView.m in Sources */,
 				081406F01EBC5C23009AD987 /* AppDelegate.m in Sources */,
-				086019B91ED8183700DDF1D1 /* QTPageContentView.m in Sources */,
 				086019C01ED8186D00DDF1D1 /* QTOfficialCollectionViewCell.m in Sources */,
 				081407281EBC8A6D009AD987 /* UIColor+Hex.m in Sources */,
 				086019B31ED8164400DDF1D1 /* QTPinterestViewController.m in Sources */,
 				081407291EBC8A6D009AD987 /* UIImage+UIColor.m in Sources */,
-				086019BA1ED8183700DDF1D1 /* QTPageTitleView.m in Sources */,
+				08C582F91EE6ACE200611FBC /* QTPageTitleView.m in Sources */,
 				081406ED1EBC5C23009AD987 /* main.m in Sources */,
 				08214DB41EC55CA000D0D0BC /* QTTopCollectionViewCell.m in Sources */,
 				08214DB11EC478FB00D0D0BC /* QTTopCycleView.m in Sources */,
