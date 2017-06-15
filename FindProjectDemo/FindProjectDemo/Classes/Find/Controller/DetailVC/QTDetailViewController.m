@@ -438,15 +438,20 @@ static NSString * const CellID = @"CellID";
 {
     // 由于使用了 self-sizing contentSize 是系统逐渐计算出来的, 所以 这里直接拿到 contentSize 有可能不准确,是一个折中方案
     
-    if ((self.commentTableView.contentSize.height - self.articleViewH) > self.commentTableView.frame.size.height) // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
+    
+    if (self.commentTableView.contentSize.height > self.commentTableView.frame.size.height) // 如果 contentSize 高度 都小于 commentTableView 高度, 则不滚动
     {
-        [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
-    }
-    else // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (contentSize.height - commentTableView 高度)
-    {
-        CGFloat pointY = self.commentTableView.contentSize.height - self.commentTableView.bounds.size.height;
         
-        [self.commentTableView setContentOffset:CGPointMake(0, pointY) animated:YES];
+        if ((self.commentTableView.contentSize.height - self.articleViewH) > self.commentTableView.frame.size.height) // 全部 cell 的高度总和 大于 commentTableView 的高度, 直接让第一个 cell 滚动到 控件顶部
+        {
+            [self.commentTableView setContentOffset:CGPointMake(0, self.articleViewH) animated:YES];
+        }
+        else // 全部 cell 的高度总和 小于 commentTableView 的高度, 只滚动 (contentSize.height - commentTableView 高度)
+        {
+            CGFloat pointY = self.commentTableView.contentSize.height - self.commentTableView.bounds.size.height;
+            
+            [self.commentTableView setContentOffset:CGPointMake(0, pointY) animated:YES];
+        }
     }
     
 }
